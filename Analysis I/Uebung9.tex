@@ -1,0 +1,328 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{parskip}
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Analysis I: Übung 9}
+\author{Michel Heusser}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Theorie}
+
+\subsection{Parameterisierung einer Expliziten Kurve}
+
+
+\underline{Satz:} Eine Kurve $\Gamma = \{(x,y) | y = f(x), x \in [a,b] \} = \{(r,\varphi) | r = g(\varphi), \varphi \in [c,d]\} $ die in explizite Form gegeben ist (in kartesische- oder Polarkordinaten) kann immer Parameterisiert werden indem man $x(t) = t$ setzt und folglich $y(t) = f(t)$ wird (bzw. $\varphi(t) = t$ und $r(t) = g(t)$) zur Form $\Gamma = \{(x(t)=t,y(t)=f(t)) |t \in [a,b] \} = \{(r(t)=g(t), \varphi(t) = t | t \in [c,d])\}$
+
+\subsubsection{Beispiel}
+
+Parameterisiere die Kurve:
+
+$\Gamma = \{(x,y) | y = \ln(x), x\in (0,\infty)\}$
+
+$\Gamma: t \rightarrow  \left(\!
+    \begin{array}{c}
+     x(t)   \\
+     y(t) 
+    \end{array}
+  \!\right) = \left(\!
+    \begin{array}{c}
+     t   \\
+     \ln(t) 
+    \end{array}
+  \!\right), t \in (0, \infty)$\\\\
+
+\subsubsection{Beispiel}
+
+Parameterisiere die Kurve:
+
+$\Gamma = \{(r,\varphi) | r = 2R\sin(\varphi), \; \varphi \in [0,\pi)\}$
+
+$\Gamma: t \rightarrow  \left(\!
+    \begin{array}{c}
+     r(t)   \\
+     \varphi(t) 
+    \end{array}
+  \!\right) = \left(\!
+    \begin{array}{c}
+     2R\sin(t)   \\
+     t 
+    \end{array}
+  \!\right), t \in [0, \pi)$\\\\
+
+Manchmal wird auch: $\Gamma: \varphi \rightarrow  \left(\!
+    \begin{array}{c}
+     2R\sin(\varphi)   \\
+     \varphi 
+    \end{array}
+  \!\right), \varphi \in [0, \pi)$\\\\
+
+\subsection{Steigung einer Parameterisierten Kurve}
+
+
+\underline{Satz}: Die Steigung $m(t)$ einer nach $t$ parameterisierten Kurve wird wie folgt berechnet:
+
+\begin{center}
+$m(t) = \frac{\dot y(t)}{\dot x(t)}$
+\end{center}
+
+\subsubsection{Beispiel}
+
+Finde die Steigung der Kurve:
+$\Gamma: t \rightarrow  \left(\!
+    \begin{array}{c}
+     x(t)   \\
+     y(t) 
+    \end{array}
+  \!\right) = \left(\!
+    \begin{array}{c}
+     t   \\
+     3\cos(t) 
+    \end{array}
+  \!\right), t \in [0, \pi)$\\ am Punkt $(\frac{\pi}{4},\frac{1}{\sqrt{2}})$
+
+Man sucht zuerst $t_0$ so dass $x(t_0)=\frac{\pi}{4}$ (oder $y(t_0) = \frac{1}{\sqrt{2}}$, es geht um das gleiche $t_0$). Wir finden $t_0 = \frac{\pi}{4}$. 
+
+Danach findet man $m(t_0) = \frac{\dot y(t_0)}{\dot x(t_0)}=\frac{-3\sin(t_0)}{1} = -3\frac{1}{\sqrt{2}}$
+
+\subsection{Parameterdarstellung einer Tangente}
+
+\underline{Satz:} Die Tangente $T$ einer Kurve $\Gamma = \{(x(t),y(t)) |t \in [a,b] \}$ am Punkt $(x_0 = x(t_0),y_0 = y(t_0)$ hat die folgende Form:
+
+\begin{center}
+
+$T: t \rightarrow  \left(\!
+    \begin{array}{c}
+     x_0  \\
+     y_0
+    \end{array}
+  \!\right) + t\cdot \vec u, \quad t\in \mathbb{R}\qquad \vec u = \frac{1}{\sqrt{\dot x^2(t_0)+\dot y^2(t_0)}}  \left(\!
+    \begin{array}{c}
+     \dot x(t_0)  \\
+     \dot y(t_0)
+    \end{array}
+  \!\right), $ 
+
+\end{center}
+
+\emph{Bemerkung:} Hier ist $\vec u$ der normierte (und schon behandelte) Tangetialvektor
+
+\subsubsection{Beispiel}
+
+Finden sie die Tangente $T$ im Punkt $(\frac{1}{2},\sqrt{2})$ (kart. Koordinaten)
+
+$\Gamma: t \rightarrow  \left(\!
+    \begin{array}{c}
+     x(t)   \\
+     y(t) 
+    \end{array}
+  \!\right) = \left(\!
+    \begin{array}{c}
+     1/t   \\
+     \sqrt{t} 
+    \end{array}
+  \!\right), t \in (0, \infty)$
+
+Man sucht zuerst den ent. $t_0$ zum gesuchten Punkt. $x(t_0) = \frac{1}{2} \Rightarrow \frac{1}{t_0} = \frac{1}{2} \Rightarrow t_0 = 2$. Danach findet man den normierten Tangentialvektor $\vec u$:\\\\
+
+$\vec u = \frac{1}{\sqrt{\dot x^2(t_0)+\dot y^2(t_0)}}  \left(\!
+    \begin{array}{c}
+     \dot x(t_0)  \\
+     \dot y(t_0)
+    \end{array}
+  \!\right)  = \frac{1}{\sqrt{ (-\frac{1}{t_0^2})^2+ (\frac{1}{2\sqrt{t_0}})^2 }}  \left(\!
+    \begin{array}{c}
+      -\frac{1}{t_0^2}  \\
+      \frac{1}{2\sqrt{t_0}}
+    \end{array}
+  \!\right) = \frac{1}{\sqrt{ \frac{1}{8}+ \frac{1}{8}}}  \left(\!
+    \begin{array}{c}
+      -\frac{1}{4}  \\
+      \frac{1}{2\sqrt{2}}
+    \end{array}
+  \!\right) =  \left(\!
+    \begin{array}{c}
+      -\frac{1}{2}  \\
+      \frac{1}{\sqrt{2}}
+    \end{array}
+  \!\right), $
+
+Es folgt dann:
+
+$T: t \rightarrow  \left(\!
+    \begin{array}{c}
+     \frac{1}{2} \\
+     \sqrt{2}
+    \end{array}
+  \!\right) + t \cdot \left(\!
+    \begin{array}{c}
+      -\frac{1}{2}  \\
+      \frac{1}{\sqrt{2}}
+    \end{array}
+  \!\right), t \in \mathbb{R}$
+
+Mann könnte auch die Kurve $\Gamma$ explizit darstellen und dann die bekannte Formel $t_{x_0}(x) = f'(x_0)(x-x_0) + f(x_0)$ aufstellen und parameterisieren (gleiche Resultat). Das Vorteilhafte an der parameterisierte Tangente, ist dass alle mögliche Richtungen möglich sind, inkl. Richtungen parallel zur $y$-Achse
+
+\subsection{Bogenlenge einer Kurve}
+\underline{Definition:} Die {\bf Bogenlänge} einer parameterisierten Kurve $\Gamma = \{(x(t),y(t)) |t \in [a,b] \}$ ist die Funktion $s(t)$, die die Länge der Kurve $\Gamma$ von $t=a$ bis jedem $t$ gibt. Sie wird wie folgt berechnet:
+
+\begin{center}
+$s(t) = \int \limits_a^t \sqrt{\dot x^2(t') + \dot y^2(t')} \; \text{d}t' $
+\end{center}
+
+\emph{Bemerkung:} Weil wir eben von $a$ bis $t$ integrieren, brauchen wir eine Laufvariable die von $a$ zu einem bestimmten "fixen" $t$ integriert. Die nennen wir $t'$.
+
+\subsubsection{Beispiel:}
+
+Berechne die Bogenlenge der Kurve:
+$\Gamma: t \rightarrow  \left(\!
+    \begin{array}{c}
+     x(t)   \\
+     y(t) 
+    \end{array}
+  \!\right) = \left(\!
+    \begin{array}{c}
+     1/t   \\
+     \sqrt{t} 
+    \end{array}
+  \!\right), t \in (1, \infty)$\\
+
+$s(t) =  \int \limits_1^t \sqrt{\dot x^2(t') + \dot y^2(t')} \; \text{d}t'  = \int \limits_1^t \sqrt{ (-\frac{1}{t'^2})^2+ (\frac{1}{2\sqrt{t'}})^2 } \; \text{d}t' = \int \limits_1^t \sqrt{ \frac{1}{t'^4}+ \frac{1}{4t'} } \; \text{d}t' = ...$\\\\
+$\Rightarrow s(t) = ...$
+ 
+\subsection{Parameterisierung nach der Bogenlänge}
+
+\underline{Satz:} Eine parameterisierte Kurve $\Gamma = \{(x(t),y(t)) |t \in [a,b] \}$ kann {\bf nach ihrer Bogenlänge} parameterisiert werden, indem man zuerst $s(t)$ berechnet und dann man die Funktion invertiert, so dass man $t(s)$ bekommt. Dieses $t(s)$ kann man dann in die Parameterisierung nach $t$ einsetzen zu $\Gamma = \{ (x(t(s)),y(t(s)) \ s \in [s(a), s(b)]\} = \{ (x(s), y(s)) | s \in [c , d]\}$
+
+\subsubsection{Beispiel}
+
+Die Bogenlänge der Kurve $\Gamma: t \rightarrow  \left(\!
+    \begin{array}{c}
+     x(t)   \\
+     y(t) 
+    \end{array}
+  \!\right) = \left(\!
+    \begin{array}{c}
+     t   \\
+     t^\frac{3}{2}
+    \end{array}
+  \!\right), t \in (-\frac{4}{9}, \infty)$\\ ist:$s(t) = \frac{8}{27}(1+\frac{9}{4}t)^\frac{3}{2}$\\
+
+Wir lösen jetzt nach $t$ nach: $ \Rightarrow t(s) = s^\frac{2}{3} - \frac{4}{9}$. Durch das Einsetzen in die Kurvenfunktion wir bekommen:\\
+
+$\Gamma: s \rightarrow  \left(\!
+    \begin{array}{c}
+     x(t(s))   \\
+     y(t(s)) 
+    \end{array}
+  \!\right) = \left(\!
+    \begin{array}{c}
+     t(s)   \\
+     t(s)^\frac{3}{2}
+    \end{array}
+  \!\right) = \left(\!
+    \begin{array}{c}
+     s^\frac{2}{3} - \frac{4}{9}   \\
+     (s^\frac{2}{3} - \frac{4}{9})^\frac{3}{2}
+    \end{array}
+  \!\right), s \in (0, \infty)$\\
+
+$\Gamma$ ist jetzt nach der Bogenlänge parameterisiert!
+
+\subsection{Krümmung und Krümmungsradius}
+
+\underline{Definition:} Die Krümmung einer nach ihrer Bogenlänge parameterisierte Kurve $\Gamma = \{(x(s),y(s)) |s \in [c,d] \}$ ist definiert als die Steigungsänderung, wenn man sich entlang der Kurve bewegen würde (deshalb Bogenlänge). Oder anders gesagt: $k(s) := \frac{\text{d}\alpha(s)}{\text{d}s}$ mit $\alpha(s) = \arctan(\frac{\dot y(s)}{\dot x(s)})$. Eingesetzt bekommt man:
+\begin{center}
+$k(s) = \frac{\ddot y \dot x - \dot y \ddot x}{\dot x^2 +\dot y^2}$
+\end{center}
+
+\underline{Satz:} Wenn eine Kurve {\bf nicht nach der Bogenlänge} parameterisiert ist ($\Gamma =  \{(x(t),y(t)) |t \in [a,b] \}$). Dann berechnet man die Kurve nach der oberen Definition der Krümmung:
+
+\begin{center}
+$k(t) = \frac{\ddot y \dot x - \dot y \ddot x}{(\dot x^2 +\dot y^2)^\frac{3}{2}}$\\
+\end{center}
+
+\emph{Beweis}: Man berechnet die Bogenlänge $s(t) = f(t)$ und daraus $t(s) = f^{-1}(s)$. Damit schreibt man $k(s)$ als $k(t(s))$ und man benutzt die Definition von Krümmung und die Kettenregel $k(t(s)) := \frac{d\alpha}{ds} = \frac{d\alpha}{dt}\cdot \frac{dt}{ds}.$ Um $\frac{ds}{dt}$ zu berechnen benutzt man die Definition von Bogenlänge und den Hauptsatz der Integralrechnung ("Die Umkehrung von Integrieren ist Ableiten"):  $\frac{ds}{dt} = \frac{d}{dt}\int \limits_a^t \sqrt{\dot x^2(t') + \dot y^2(t')} \; \text{d}t' = \sqrt{\dot x^2(t) + \dot y^2(t)}$ 
+
+
+
+\underline{Satz:} Der Krümmungsradius von einer parameterisierten Kurve $\Gamma$ zum Punkt $(x(t),y(t))$ ist der Radius des am besten angepassten Kreises am Punkt $(x(t),y(t)$ und es wird wie folgt berechnet:
+
+\begin{center}
+$R(t) = \frac{1}{k(t)} \qquad$ wobei $k(t)$ die Krümmung ist.
+\end{center}
+
+\emph{Bemerkung:} Der am besten angepasstsen Kreis am Punkt $(x_0,y_0)$ berührt Tangential die Kurve $\Gamma$. Der Verbindungsvektor zwischen $(x_0,y_0)$ und der Mittelpunkt des Kreises liegt {\bf senkrecht} auf die tangentiale Richtung der Kurve am gleichen Punkt.
+
+\section{Tipps zur Übung}
+
+\subsection{Online-Teil}
+\begin{itemize}
+\item Frage 1: Parameterisierung. Krümung aufstellen. Maximum finden.
+\item Frage 2: Gleich wie beim Schnittpunkt von zwei Kurven  $y=f_1(x)$ und $y = f_2(x)$, man sucht den Punkt $(x,y)$ der beide Gleichungen erfüllt. Dadurch kriegt man zwei Gleichungen ($y=f_1(x)$ und $y = f_2(x)$) und zwei Unbekannten ($x$ und $y$) die man nach den Unbekannten lösen kann. Analog, sucht man den Punkt (in Polarkoordinaten) $(r,\phi)$ der in beiden Kurven ist, also beide Kurvegleichunen erfüllt. Man transformiert den Punkt in Kartesische Koordinate und findet die Tangente auf dem Punkt P (Theorie)
+\item Frage 3: Kurve parameterisieren und in kart. Koordinaten umwandeln.  
+\end{itemize}
+
+
+
+
+\end{document}
+
+
+

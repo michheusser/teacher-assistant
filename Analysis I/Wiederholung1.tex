@@ -1,0 +1,211 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{parskip}
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Analysis I: Wiederholung 1}
+\author{Michel Heusser}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+%Dreiecksungleichung
+%Notwendig und hinreichend
+%Kreisen
+%Ellipsen
+%Hyperbeln
+%Bernoulli l'Hopital
+%Betrag
+
+
+\section{Theorie}
+
+\subsection{Regel von Bernoulli-de l'Hôpital}
+\underline{Satz}: Falls bei den (im relevanten Bereich) differenzierbaren Funktionen $f$ und $g$ eins der untenstehende Fälle gilt:
+\begin{itemize}
+\item $\lim\limits_{x\rightarrow x_0^\pm} f(x) = 0$ \underline{und} $\lim\limits_{x\rightarrow x_0^\pm} g(x) = 0$
+\item $|\lim\limits_{x \rightarrow x_0^\pm} f(x) |= \infty$ \underline{und} $|\lim\limits_{x\rightarrow x_0^\pm} g(x) |= \infty$
+\end{itemize}
+Und Zusätzlich:
+\begin{itemize}
+\item c := $\lim \limits_{x \rightarrow x_0^\pm} \frac{f'(x)}{g'(x)} $ konvergiert oder divergiert gegen $\pm \infty$
+\end{itemize}
+Dann gilt: 
+\boxed{\lim\limits_{x \rightarrow x_0^\pm} \frac{f(x)}{g(x)} = \lim \limits_{x \rightarrow x_0^\pm} \frac{f'(x)}{g'(x)} }\\
+
+\emph{Bemerkung:} Falls $D(f)$ es erlaubt, $x_0$ darf auch $\pm \infty$ sein! Man muss auch im Kopf (oder eher im Bauch) behalten, dass $x_0 = 0$ \underline{kein} spezialfall ist. Es ist (wie $1, 999$ oder $\sqrt2$) irgendeine endliche reele Zahl und hat keinen Einfluss auf die Entscheidung ob die obige Regel anwendbar ist.
+
+\subsubsection{Beispiel}
+$f(x) := \frac{\sin(x)+2x}{\cos(x)+2x}$ (Falls nichts mehr steht ist $f: \mathbb{R}\rightarrow \mathbb{R}$ impliziert, ohne Definitionslücken, falls vorhanden)\\
+
+Man sucht $\lim\limits_{x\rightarrow \infty}f(x)$\\
+
+
+Voraussetzungen für Bernoulli - de l'Hôpital:
+\begin{itemize}
+\item $\lim\limits_{x\rightarrow \infty}(\sin(x) + 2x)= \infty$ 
+\item $\lim\limits_{x\rightarrow \infty} (\cos(x) + 2x) = \infty $
+\item $c= \lim\limits_{x\rightarrow \infty}\frac{(\sin(x)+ 2x )'}{(\cos(x) + 2x)'} = \lim\limits_{x\rightarrow \infty}\frac{\cos(x) + 2}{-\sin(x)+2} $ Divergiert periodisch! (Also nicht endlich oder gegen $\pm \infty$)
+\end{itemize}
+
+$\Rightarrow$ B.H. nicht anwendbar! (Obwohl der ursprüngliche Term schon konvergiert!)
+
+
+$ \lim \limits_{x \rightarrow \infty} \frac{\sin(x) + 2x}{\cos(x) + 2x} = \lim \limits_{x \rightarrow \infty}( 1 + \frac{\sin(x) - \cos(x) }{\cos(x) + 2x}) = 1 $ 
+
+$\Rightarrow \lim\limits_{x \rightarrow \infty} \frac{f'(x)}{g'(x)} \neq \lim \limits_{x \rightarrow \infty} \frac{f(x)}{g(x)}$
+
+\subsubsection{Beispiel}
+$f:  (-2,0) \rightarrow \mathbb{R}$, $x\rightarrow f(x) $\\
+$f(x):= \frac{1+\sin(x)-\cos(x)}{3x^2 + 6x}$
+
+Voraussetzungen für Bernoulli - de l'Hôpital:
+\begin{itemize}
+\item $\lim\limits_{x\rightarrow 0^-} 1 + \sin(x) - \cos(x) = 0$ 
+\item $\lim\limits_{x\rightarrow 0^-} (3x^2+6x) = 0 $
+\item $c= \lim\limits_{x\rightarrow 0^-}\frac{(1+\sin(x)-\cos(x))'}{(3x^2 + 6x)'} = \lim\limits_{x\rightarrow 0^-}\frac{\cos(x)+\sin(x)}{6x + 6} =\frac{1+0}{0 + 6}=\frac{1}{6}$ (Konvergiert)\\
+\end{itemize}
+
+ $\Rightarrow \lim\limits_{x\rightarrow 0^-}f(x)= \lim\limits_{x\rightarrow 0^-}\frac{1+\sin(x)-\cos(x)}{3x^2 + 6x} = \lim\limits_{x\rightarrow 0^-}\frac{(1+\sin(x)-\cos(x))'}{(3x^2 + 6x)'} =\frac{1}{6}$ 
+
+\subsection{Logik}
+\underline{Definition}: Falls $a$ und $b$ zwei Aussagen sind und es gilt, dass wenn $a$ wahr ist, dann ist sicher $b$ auch wahr, aber wenn $b$ wahr ist dann kann $a$ (aber muss nicht) wahr sein. Dann schreibt man $a \Rightarrow b$ und man sagt:
+\begin{itemize}
+\item $b$ ist eine {\bf notwendige} bedingung (oder implikation) von $a$
+\item $a$ ist eine {\bf hinreichende} bedingung für $b$, weil $a$ wahr sein kann (aber muss nicht) falls $b$ wahr ist  
+\end{itemize}
+
+\subsubsection{Beispiel}
+
+$a =$ "Man kommt aus Zürich"\\
+$b =$ "Man kommt aus der Schweiz"
+
+Es gilt: "Man kommt aus Zürich" $\Rightarrow$ "Man kommt aus der Schweiz" (also $a \Rightarrow b$)
+"Man kommt aus der Schweiz" ($b$) ist {\bf notwendig} damit "Man kommt aus Zürich" (a) überhaupt gültig sein kann. Dafür ist $a$ (nur)  {\bf hinreichend} für $b$, weil wenn "Man kommt aus der Schweiz" gültig ist, dann könnte es auch möglich sein, dass "Man kommt aus Zürich" muss aber nicht wahr sein. Aus der Schweiz zu kommen ist natürlich eine notwendige Bedingung um aus Zürich zu kommen. Aus Zürich zu kommen ist nur etwas "mögliches" wenn man aus der Schweiz kommt (also eine hinreichende Bedingung)
+
+\subsubsection{Beispiel}
+
+$a=$ "Gute Noten"\\
+$b=$ "Viel lernen"
+
+Es gilt (für die ETH): wenn man gute Noten hat (also $a$ wahr), dann hat man sicher viel gelernt ($b$ wahr). Wenn man aber viel lernt ($b$ wahr) müssen nicht unbedingt gute Noten folgen ($a$ kann, aber muss nicht sein!), man muss richtig lernen! \\
+
+\subsubsection{Beispiel}
+$a = (x  = -3)$\\
+$b = (x^2 = 9)$
+
+Es gilt: $x  = -3 \Rightarrow x^2 = 9$. Umgekehrt ($x^2=9 \Rightarrow  x = -3$) gilt es aber nicht (weil $x=-3$ nicht die einzige mögliche "Folge" von $x^2=9$ sondern auch $x=3$)\\\\
+
+
+\underline{Definition}: Falls $a$ und $b$ zwei Aussagen sind und $b$ ist wahr falls $a$ wahr ist ($a \Rightarrow b$) und $a$ wahr falls $b$ wahr ist ($b \Rightarrow a$). Man sagt dann, dass $a$ und $b$ {\bf äquivalente} Aussagen sind und man schreibt $a \Leftrightarrow b$.
+
+\subsubsection{Beispiel}
+Ich habe ein Schwimmbad und heute hat es sicher nicht geregnet:\\
+$a=$"Mein Hund ist nass"\\
+$b=$"Mein Hund war im Schwimmbad"\\ 
+
+Es gilt, dass wenn mein Hund nass ist, dann war er mit Sicherheit sagen, dass er im Schwimmbad war ($a \Rightarrow b$). Anderseits, wenn mein Hund ins Schwimmbad springt, dann kann ich kurz danach mit Sicherheit sagen, dass er nass ist ohne ihn direkt zu sehen ($b \Rightarrow a$). Beide Aussagen sind in diesem Kontext äquivalent! ($a \Leftrightarrow b$)
+
+\subsubsection{Beispiel}
+
+$a=$ "Gute Noten"\\
+$b=$ "Viel und richtig lernen"
+
+Hier gilt (nochmal für die ETH): Wenn man Gute noten hat, kann man mit sicherheit sagen, dass man viel und richtig gelernt hat ($a \Rightarrow$ b). Umgekehrt, wenn man viel und richtig lernt, dann bekommt man bestimmt gute Noten ($b \Rightarrow a$). Deswegen sind beide Aussagen äquivalent ($a \Leftrightarrow b$)
+
+\subsubsection{Beispiel}
+
+$a = (x -3 = 5)$\\
+$b = (x = 8)$
+
+Hier git: $x-3=5 \Rightarrow x=8$ (man kann von links auf rechts eideutigerweise "gehen") und $x=8 \Rightarrow x-3=5$ auch (man kann hier von links auf rechts auch eindeutigerweise "gehen") deswegen gilt: $x-3 = 5 \Leftrightarrow x=8$
+
+
+
+\section{Beispiele}
+\subsection{Grenzwerte}
+
+
+\subsubsection{Beispiel}
+$\lim\limits_{x\rightarrow 0}(\frac{1}{\sin(x)} - \frac{1}{x})$\\
+$=0$
+\subsubsection{Beispiel}
+$\lim\limits_{x\rightarrow 0}(\cos(x)^\frac{1}{x^2})$\\
+$=e^{-\frac{1}{2}}$
+
+\subsubsection{Beispiel}
+$\lim\limits_{x\rightarrow 0}(\cot(x)\cdot \ln(1+3x))$\\
+$=3$
+\subsubsection{Beispiel}
+$\lim\limits_{x\rightarrow 0}(\frac{\sin(\sqrt{1+x}-1)}{x})$\\
+$=\frac{1}{2}$
+\subsubsection{Beispiel}
+$\lim\limits_{x\rightarrow 0}(\sqrt[x]{1+x})$\\
+$=e$
+\subsubsection{Beispiel}
+$\lim\limits_{x\rightarrow 0}(\frac{\sqrt{1-\cos(x)}}{x})$\\
+$=\frac{\sqrt2}{2}$
+
+\end{document}
+
+
+%
+%\underline{Definition}: Eine Funktion $f: X \rightarrow Y$, $x \rightarrow f(x)$ heisst {\bf differenzierbar in $x_0 \in D(f)$} falls:
+%\begin{itemize}  
+%\item Formal: $\exists c = \lim_{d \rightarrow 0} \frac{f(x_0+d)-f(x_0)}{d}$ mit $c\in \mathbb{R}$
+%\item Formal wörtlich: Der Term $\frac{f(x_0+d)-f(x)}{d}$ den gleichen eindeutigen endlichen (reelen) Grenzwert $c$ wenn man $d$ gegen null von links \underline{und} rechts streben lässt.
+%\end{itemize}

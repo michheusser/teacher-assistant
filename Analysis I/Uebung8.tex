@@ -1,0 +1,285 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{parskip}
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Analysis I: Übung 8}
+\author{Michel Heusser}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Theorie}
+
+\subsection{Grössenordnung von Funktionen}
+\underline{Definition:} Eine Funktion $f(x)$ heisst für $x \rightarrow a^+$ {\bf von kleinerer Grössenordnung} als $g(x)$ falls gilt:
+\begin{center}
+$\lim \limits_{x \rightarrow a+} \frac{f(x)}{g(x)} = 0$ ($a^+ = \infty$ ist auch erlaubt!)
+\end{center}
+Man schreibt dann $f(x) = o(g(x))$ für $x \rightarrow a^+$ (wobei $o$ das sog. Landau-Symbol ist). 
+
+\emph{Bemerkung}: Der Landau-Symbol hilft uns Funktionen auf ihre Wachstumsrate miteinander vergleichen zu können. 
+
+\subsubsection{Beispiel}
+
+$x^2 = o(x^3)$ für $x \rightarrow \infty$ gilt weil:
+
+$\lim \limits_{x \rightarrow \infty} \frac{x^2}{x^3} = \lim \limits_{x \rightarrow \infty} \frac{1}{x} =0$ 
+
+Umgekehrt natürlich nicht!
+
+\subsubsection{Beispiel}
+
+$-\frac{1}{x} = o(\ln(x))$ für $x \rightarrow 0^+$ gilt weil: 
+
+$\lim \limits_{x \rightarrow 0^+} \frac{-\frac{1}{x}}{\ln(x)} = \lim \limits_{x \rightarrow 0^+} \frac{\frac{1}{x^2}}{\frac{1}{x}} =\lim \limits_{x \rightarrow 0^+} \frac{1}{x} = 0$ 
+
+Umgekehrt natürlich nicht!
+
+\subsection{Koordinatentransformation}
+Die Beschreibung eines Punktes/Vektors in der Ebene ist eindeutig Definiert, wenn man der Ort in $x$ und in $y$ angibt mit dem Paar $(x,y)$ in sog. {\bf kartesische Koordinaten}. Man kann es aber auch mit einer Richtung $\phi$ und einer Länge $r$ eindeutig beschreiben in sog. {\bf Polarkoordinaten} mit dem Paar $(r,\phi)$ (wo $r$ der Abstand zum Ursprung ist und $\phi$ der Winkel zur $x$-Achse ist. Die Folgenden beziehungen erluben uns Koordinaten zu wechseln:
+
+Polarkoordinaten $\Rightarrow$ kartesische Koordinaten:
+\begin{itemize}
+\item $x = r\cos(\phi)$
+\item $y = r\sin(\phi)$
+\end{itemize}
+
+Kartesische Koordinaten $\Rightarrow$ Polarkoordinaten: 
+\begin{itemize}
+\item $r = \sqrt{x^2 + y^2}$
+\item $y = \arctan(\frac{y}{x})$
+\end{itemize}
+
+
+\subsection{Ebene Kurven}
+\underline{Definition:} Eine {\bf Ebene Kurve} ist eine Menge von Punkte (also Paare oder Vektoren) $(x,y)$ die eine bestimmte vorschrift Erfüllen und dazu noch "wie ein Faden auschauen" (kompliziertere Definition). Sie heissen Kurven weil man sie in einer kartesischen Ebene darstellen kann. Sie können in verschiedener Arten beschrieben werden, solange es eine eindeutige Beschreibung ist. $\Gamma$ ist eine Ebene Kurve und die kann wie folgt beschrieben werden:
+
+{\bf Kartesische Koordinaten:}
+\begin{itemize}
+\item \emph{Parameterdarstellung}: $\Gamma = \{(x(t),y(t)) \in \mathbb{R} \times \mathbb{R}\quad | \quad t \in I \subset \mathbb{R} \}$
+\item \emph{Implizite Darstellung}: $\Gamma = \{(x,y) \in \mathbb{R} \times \mathbb{R}\quad | \quad f(x,y)=0 \}$
+\item \emph{Explizite Darstellung}: $\Gamma = \{(x,y) \in \mathbb{R} \times \mathbb{R}\quad | \quad y = f(x) \}$
+\end{itemize} 
+
+{\bf Polarkoordinaten:}
+\begin{itemize}
+\item Parameterdarstellung: $\Gamma = \{(r(t),\phi(t)) \in \mathbb{R^+} \times \mathbb{R} \quad | \quad t \in I \subset \mathbb{R} \}$
+\item Implizite Darstellung: $\Gamma = \{(r,\phi) \in \mathbb{R^+}\times \mathbb{R} \quad | \quad f(r,\phi)=0 \}$
+\item Explizite Darstellung: $\Gamma = \{(r,\phi) \in \mathbb{R^+}\times \mathbb{R} \quad | \quad r = f(\phi) \}$
+\end{itemize}
+
+
+\boxed{\text{Man kann auch schreiben: }\Gamma: t \rightarrow  \left(\!
+    \begin{array}{c}
+      x(t) \\
+      y(t)
+    \end{array}
+  \!\right) , t \in [a,b]
+\text{  anstatt } \Gamma = \{(x(t),y(t))  |  t \in [a,b] \}}
+
+\subsubsection{Beispiel}
+
+Der Kreis mit Radius R und Mitelpunkt $(0,0)$:
+
+{\bf Kartesische Koordinaten:}
+\begin{itemize}
+\item \emph{Parameterdarstellung 1}: $\Gamma = \{(R\cos (t), R \sin (t)) \quad | \quad t \in [0,2\pi) \}$
+\item \emph{Parameterdarstellung 2}: $\Gamma = \{(R\cos (2t), R \sin (2t)) \quad | \quad t \in [0,\pi) \}$
+\item \emph{Parameterdarstellung 3}: $\Gamma = \{(R\cos (2t), R \sin (2t)) \quad | \quad t \in [-\pi,\pi) \}$
+\item \emph{Implizite Darstellung}: $\Gamma = \{(x,y) \in \mathbb{R} \quad | \quad x^2 + y^2 - R^2=0 \}$ \\(Kreisgleichung: $x^2 + y^2 = R^2$)
+\item \emph{Explizite Darstellung}: $\Gamma = \{(x,y) \in \mathbb{R} \quad | \quad y = \sqrt{R^2 - x^2}$ oder $y = -\sqrt{R^2 - x^2} \}$
+\end{itemize}
+
+ {\bf Polarkoordinaten:}
+\begin{itemize}
+\item \emph{Parameterdarstellung}: $\Gamma = \{(r(t) = R, \phi(t) = t) \quad | \quad t \in [0,2\pi) \}$
+\item \emph{Implizite Darstellung}: $\Gamma = \{(r,\phi) \in \mathbb{R} \quad | \quad r-R=0 \}$ (r = R unabhängig vom Winkel)
+\item \emph{Explizite Darstellung}: $\Gamma = \{(r,\phi) \in \mathbb{R} \quad | \quad r=R \}$
+\end{itemize}
+
+
+
+\subsubsection{Beispiel}
+Die Ellipse mit horizontalen Halbachse $a$ ("Radius" in $x$-Richtung) und vertikalen Halbachse $b$ ("Radius" in $y$-Richtung).
+\begin{itemize}
+\item \emph{Parameterdarstellung 1}: $\Gamma = \{(a\cos (t),b \sin (t)) \quad | \quad t \in [0,2\pi) \}$
+\item \emph{Parameterdarstellung 2}: $\Gamma = \{(a\cos (2t), b \sin (2t)) \quad | \quad t \in [0,\pi) \}$
+\item \emph{Parameterdarstellung 3}: $\Gamma = \{(a\cos (2t), b \sin (2t)) \quad | \quad t \in [-\pi,\pi) \}$
+\item \emph{Implizite Darstellung}: $\Gamma = \{(x,y) \in \mathbb{R} \quad | \quad \frac{x^2}{a^2} + \frac{y^2}{b^2} -1=0 \}$\\ (Ellipsengl: $\frac{x^2}{a^2} + \frac{y^2}{b^2} =1$)
+\item \emph{Explizite Darstellung}: $\Gamma = \{(x,y) \in \mathbb{R} \quad | \quad y = b\sqrt{ 1- \frac{x^2}{a^2}}$ oder $y = -b\sqrt{ 1- \frac{x^2}{a^2}} \}$
+\end{itemize}
+
+\subsubsection{Beispiel}
+Eine Spirale mit Verstärkungsfaktor $\lambda$
+\begin{itemize}
+\item \emph{Parameterdarstellung 1}: $\Gamma = \{(x(t) = \lambda  t\cos (t), y(t) = \lambda t \sin (t)) \quad | \quad t \in [0,\infty) \}$
+\item \emph{Parameterdarstellung 2}: $\Gamma = \{(r(t) = \lambda  t,\phi(t)= t) \quad | \quad t \in [0,\infty) \}$
+\end{itemize}
+
+\subsubsection{Beispiel}
+Kreis mit Radius R und Mittelpunkt $(0,R)$
+\begin{itemize}
+\item \emph{Parameterdarstellung 1}: $\Gamma = \{(x(t) = R\cos (t), y(t) = R\sin (t) + R) \quad | \quad t \in [0,2\pi) \}$
+\item \emph{Parameterdarstellung 2}: $\Gamma = \{(r(t) = 2R\cdot \sin(t),\phi(t)= t) \quad | \quad t \in [0,\pi) \}$
+\item \emph{Explizite Darstellung 2}: $\Gamma = \{(r,\phi) \quad | \quad r = 2R\cdot \sin(\phi) $ und $ \phi \in [0,\pi)\}$
+\end{itemize}
+
+\subsubsection{Beispiel}
+Kreis mit Radius R und Mittelpunkt $(R,0)$
+\begin{itemize}
+\item \emph{Parameterdarstellung 1}: $\Gamma = \{(x(t) = R\cos (t)+ R, y(t) = R\sin (t)) \quad | \quad t \in [0,2\pi) \}$
+\item \emph{Parameterdarstellung 2}: $\Gamma = \{(r(t) = 2R\cdot \cos(t),\phi(t)= t) \quad | \quad t \in [0,\pi) \}$
+\item \emph{Explizite Darstellung 2}: $\Gamma = \{(r,\phi) \quad | \quad r = 2R\cdot \cos(\phi) $ und $ \phi \in [0,\pi)\}$
+\end{itemize}
+
+\subsubsection{Beispiel}
+Ellipse mit h. Halbachse $a$ und v. Halbachse $b$ und Mittelpunkt $(m_x, m_y)$
+\begin{itemize}
+\item \emph{Parameterdarstellung 1}: $\Gamma = \{(a\cos (t)+m_x,b\sin (t)+m_y) \quad | \quad t \in [0,2\pi) \}$
+\end{itemize}
+
+\subsubsection{Beispiel}
+die Parameterdarstellung lautet:
+$\Gamma: t \rightarrow  \left(\!
+    \begin{array}{c}
+       A\cdot e^{\lambda t}\\
+     B \cdot (t^3 + t^2)
+    \end{array}
+  \!\right) , t \in \mathbb{R}$
+
+Finde die Explizite Darstellung:\\
+
+$x(t) = A\cdot e^{\lambda t} \Rightarrow t = \frac{1}{\lambda}\ln(\frac{x}{A})\\
+\Rightarrow y(t) = B\cdot(t^3 + t^2) = B\cdot(\ln(\frac{x}{A})^3 + \ln(\frac{x}{A})^2)\\
+y = B\cdot(\ln(\frac{x}{A})^3 + \ln(\frac{x}{A})^2)$
+
+\subsubsection{Beispiel}
+die Parameterdarstellung lautet:
+$\Gamma: t \rightarrow  \left(\!
+    \begin{array}{c}
+       \cos(t)\\
+     \sin(2t)
+    \end{array}
+  \!\right) , t \in [0,2\pi)$
+
+Finde die Explizite Darstellung:\\
+
+$x(t) =  \cos(t) \Rightarrow t_1 = \arccos(x), t_2 = \arccos(x) + \pi$ \\\\
+Oben sieht man, dass $t\in [0, 2\pi) $ gilt. Weil $\arccos(x)$ den Wertebereich $[0,\pi]$ hat, sind nur $t_1$ und $t_2$ Lösungen von $x(t) = \cos(t)$ und nicht auch $t_k = \arccos(x) + k\cdot\pi, k= 2,3,4,...$ (was "normalerweise" gelten würde)\\\\
+Wir bekommen dann zwei explizite Vorschriften:\\
+Es gilt: $y(t) =  \sin(2t) = 2\cdot\sin(t)\cos(t) = 2\cdot \sqrt{1-\cos^2(t)}\cos(t)$\\\\
+Durch einsetzen von $t_1$ und $t_2$:\\
+$y_1 = y(t_1) = 2\cdot \sqrt{1-\cos^2(t_1)}\cos(t_1) = 2\cdot \sqrt{1-\cos^2(\arccos(x))}\cos(\arccos(x)) = 2 \cdot \sqrt{1-x^2}\cdot x$\\\\
+Mit $\cos(\alpha + \beta) = \cos(\alpha)\cos(\beta)-\sin(\alpha)\sin(\beta)$ folgt:
+$\cos(\arccos(x)+\pi) = -x$\\\\
+Es folgt:\\
+$y_2 = y(t_2) = 2\cdot \sqrt{1-\cos^2(t_2)}\cos(t_2) = 2\cdot \sqrt{1-\cos^2(\arccos(x)+ \pi)}\cos(\arccos(x)+ \pi) = -2 \cdot \sqrt{1-x^2}\cdot x$\\
+$\Rightarrow \Gamma =\{ (x,y) | y = 2\cdot\sqrt{1-x^2}\cdot x$ oder $ y = -2\cdot\sqrt{1-x^2}\cdot x\}$\\
+
+Durch graphische Darstellung wird klar, warum "zwei Vorschriften" nötig sind.
+
+\subsection{Normierung, Tangente, Negativer Reziprok}
+\underline{Definition} aus einem Vektor $\vec u$ kann man den {\bf normierter Vektor} $\vec v$ von $\vec u$ wenn es gilt:
+
+\begin{center}
+$\vec v = \frac{\vec u}{|\vec u|}$ mit $|\vec u| = \sqrt{u_1^2+ u_2^2}$
+\end{center}
+Folglich gilt $|\vec v| = 1$. Normierte Vektoren sind sehr Hilfreich wenn man nur eine Richtung beschreiben will.\\\\
+\\
+\underline{Satz}: Der Vektor ($\frac{d}{dt}x(t), \frac{d}{dt}y(t))$ einer Kurve $\Gamma = \{(x(t),y(t)) \in \mathbb{R} \times \mathbb{R}\quad | \quad t \in I \subset \mathbb{R} \}$ zeigt in Richtung der Tangente der Kurve im Punkt $(x(t),y(t))$ 
+
+\subsubsection{Beispiel}
+$\Gamma = \{(x(t) = e^{\lambda t}, y(t) = \ln(t)) \quad | \quad t \in [0,\infty) \}$
+
+Der Vektor: ($\frac{d}{dt}x(t), \frac{d}{dt}y(t)) = (\lambda e^{\lambda t}, \frac{1}{t})$ steht zu jedem $t$ tangential zum Kurve im Punkt $(x(t), y(t))$. Falls wir nur an der Richtung interessiert sind, können wir den neuen Vektor normieren damit es immer die Länge (bei jedem $t$) behaltet:
+
+Zuerst berechnen wir die Länge vom Vektor (zu jedem $t$): $\sqrt{(\lambda^2 e^{2\lambda t}+ \frac{1}{t^2})}$, dann bilden wir unseren neuen normierten Vektor:\\ 
+$\vec v= (\frac{1}{\sqrt{(\lambda^2 e^{2\lambda t}+ \frac{1}{t^2})}}\cdot\lambda e^{\lambda t}, \frac{1}{\sqrt{(\lambda^2 e^{2\lambda t}+ \frac{1}{t^2})}} \cdot \ln(t))$\\
+
+
+\underline{Satz}: Der Vektor $(-y,x)$ heisst {\bf negatver Reziprok} von $(x,y)$ und beide stehen senkrecht aufeinander. (Beweis: mit Skalarprodukt) 
+
+
+\section{Tipps zur Übung}
+
+\subsection{Online-Teil}
+\begin{itemize}
+\item Frage 1: Die Funktion ist in 3 Punkte "fixiert", was kann zwischen den Punkten passieren? Was muss passieren? (Mindestens ein Berg/Tal, usw.)
+\item Frage 2: Aus der definition der Monotonie folgt, dass eine Funktion eine Nullstele bei der Ableitung haben und trotzdem streng monoton Fallend/Wachsend sein (z.B. $x^3$ hat keine Steigung bei $x=0$ aber trotzdem bei jedem Paar von $x_1$ und $x_2$ (und $x_1 < x_2$) gilt $f(x_1)< f(x_2)$ (streng monoton Wachsend).
+\item Frage 3: Definition von Grössenordnung
+\item Frage 4: Definition von Grössenordnung
+\item Frage 5: Ableitung $\rightarrow$ Steigung, 2. Ableitung $\rightarrow$ Krümung 
+\end{itemize}
+
+\subsection{Aufgabe 2}
+Man nimmt an $P(x,y)$ ist irgendein Punkt der die Bedingung erfüllt. Dafür stellt man den Vektor von Punkt $F_1$ zum Punkt $P(x,y)$, $\overrightarrow{F_1P}=\overrightarrow{OP} - \overrightarrow{OF_1}$ und vom Punkt $\overrightarrow{F_2P}=\overrightarrow{OP} - \overrightarrow{OF_2}$. Danach multipliziert man die Beträge von den ermittelten Vektoren zur Gleichung $|\overrightarrow{F_2P}|\cdot |\overrightarrow{F_1P}|=a^4$ und vereinfacht man (Für jeden Vektor gilt $|(u,v)|=\sqrt{u^2 + v^2}$). Diese Gleichung beschreibt schon alle Punkte auf der Kurve (Keine anschauliche Formel!). Durch benutzen der Transformation zur Polarkoordinaten ($x=r\cdot\cos(\phi)$ und $y = r\cdot\sin(\phi)$), engesetzt in der vorherigen Gleichung, bekommt man die Beschreibeung in Polarkoordinaten. 
+
+\subsection{Aufgabe 3}
+Der gesuchte Vektor $\vec x(t)$ zum Punkt auf der Kreisenvolvente zur Zeit $t$ findet man indem man durch Superposition von Vektor zu Kreispunkt (zur Zeit $t$) $\vec {x_0}(t)$ und den senkrechten Vektor mit einer wachsenden Länge $\vec p(t) = L(t)\cdot\vec n(t)$ (wobei $\vec n(t)$ die senkrechte Richtung ist und $L(t)$ die wachsende Länge ist). $\vec{x_0}(t)$ ist bekannt und $\vec n(t)$ kann man leicht finden (negativer Reziprok). Die Länge $L(t)$ ist die "abgewickelte" (oder durchgefahrene) Strecke auf dem Kreis bis Zeit $t$ (Wenn der Radius $a$ ist und der Winkel $t$ ist, was ist dann diese Strecke, also der Umfang bis dann?). Durch 
+ 
+\subsection{Aufgabe 4}
+Man sucht den Vektor vom Ursprung zum Mittelpunkt von rollenden Kreis. Dieser Vektor ist die Superposition vom Vektor vom Ursprung zu irdeneinem Punkt auf der Ellipse, also $\vec{x_0}(t) = (a\cdot \cos(t), b\cdot \sin (t) )$ mit dem Vektor (der länge 1) von diesem Punkt, senkrecht nach draussen $\vec n (t)$ multipliziert mit $R=1$. Also $\vec{x}(t)=\vec {x_0}(t) + R\cdot\vec n (t)$. Um $\vec n (t)$ zu finden muss man erst die Richtung der Tangente der Ellipse im Punkt $(a\cdot \cos(t), b\cdot \sin(t))$ finden. 
+
+Die Richtung der Tangente ist die gleiche Richtung wie die von der Ableitung von $\vec {x_0}(t)$ (Im moment interessiert uns nur die Richtung, egal wie lang unser Vektor ist, da wir sowieso am Ende $\vec n(t)$ normieren werden). Wenn man diese Richtung hat, kann man die senkrechte Richtung davon Finden (Theorie) und diesen Vektor dann normieren. Der resultierende Vektor ist $\vec n (t)$
+
+
+
+\end{document}
+
+
+

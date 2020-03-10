@@ -1,0 +1,213 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+\usepackage{amsfonts}
+
+
+%%% The "real" document content comes below...
+
+\title{Analysis: Uebung 1}
+\author{Michel Heusser}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+
+
+%\section{Schnellübung}
+%\subsection{Rechenregeln}
+%
+%\begin{itemize}
+%
+%\item $\textrm{log}(x^y) = y \cdot \textrm{log}(x)$
+%
+%\item $\sqrt[n]{a\cdot b} = \sqrt[n]{a} \cdot \sqrt[n]{b}$
+%
+%\item $ a  <  b \Leftrightarrow f(a) < f(b) $ (falls $f(x)$ monoton wachsend!)
+%
+%\item sin$(2x) =  2\cdot$sin$(x)$cos$(x)$ 
+%
+%
+%\end{itemize}
+%
+%\subsection{Loesung einer Gleichung}
+%Um $f_1(x)\cdot f_2(x) \cdot f_3(x)\cdot ... \cdot f_n(x) = 0$ zu lösen, muss man $f_1(x) = 0$, $f_2(x) = 0$, $f_3(x) = 0$, ... , $f_n(x) = 0$ einzeln lösen. Die Loesungen von jedem einzelnen Gleichungssystem ist eine Lösung der urspruenglicher Gleichung.
+%
+%
+%\subsection{Beweis durch Induktion}
+%
+%$A_a(n)$ und $A_b(n)$ sind zwei Aussagen die von einer natürlichen Zahl $n$ abhaengig sind.\\
+%
+%Zu beweisen: $A_a(n) = A_b(n)$\\
+%
+%Verankerung: Man zeigt, dass $A_a(n=1) = A_b(n=1) $ \\
+%
+%Induktionsschritt: Durch mathematische Umformungen zeigt man, dass $A_a(n+1) = A_b(n+1)$\\
+%
+%Wenn beide Schritte erfolgreich sind, dann hat man gezeigt, dass die erste Gleichung für $n=1,2,3,...,$ gilt. \\\\
+%
+%$Bemerkung:$ Wenn die Aussagen nicht bei $n=1$ anfangen sollten und/oder nur gewisse Werte von $n$ erlaubt wären (z.B. n=3,5,7,9) , dann müsste man die Verankerung und den Induktionschritt entsprechend anpassen.
+%
+%
+%
+%\section{Theorie}
+%
+%\subsection{Betrag mit Ungleichungen}
+%
+%$ |x| < a \Leftrightarrow x < a$ und $x > - a$ (Graphisch!)
+%
+%
+%\subsection{Folgen}
+%
+%Folge: Eine Folge ist eine Menge von geordnete Zahlen, die einen Zusammenhang miteinander haben können (müssen aber nicht!). Sie können rekursiv oder explizit beschrieben werden.\\
+%
+%Reihe: Ist auch eine Menge von geordnete Zahlen (also eine Folge), deren Glieder die Teilsummen von einer ursprünglichen Folge sind.\\
+%
+%Beschränkung: Wenn es für eine Folge $\langle a_n \rangle$, ein S existiert so, dass $S\leq a_n$ oder $S\geq a_n$ (für alle n), dann ist die Folge beschränkt. \\
+%
+%Monotonie: Eine Folge ist monoton steigend/fallend, falls sie von einem Glied zum Nächsten zunimmt/abnimmt oder gleichbleibt. Die Folge ist strikt monoton steigend/fallend falls sie von einem Glied zum Nächsten ausschliesslich zunimmt/abnimmt.\\
+%
+%Konvergenz: Falls die Glieder einer Folge, bei wachsendem n, sich immer an einem gewissen Wert annähern, dann ist diese Folge konvergent und dieser Wert ihr Grenzwert.\\
+%
+%Divergenz: Eine Folge die nicht Beschränkt ist, ist divergent.
+%
+%Nullfolge: Eine Nulllfolge ist eine Folge, deren Grenzwert Null ist.\\
+%
+%Grenzwert: Falls eine Folge Konvergent ist gilt für ihren Grenzwert:  $  c = \lim_{n \to \infty} a_n$, wobei $c$ der Grenzwert ist\\
+%
+%
+%Aritmetische/Geometrische Folge/Reihe: Formeln an der Tafel
+
+\section{Theorie}
+\subsection{Mengen}
+Menge: Zusammenfassung von beliebig viele (endlich oder unendlich viele) beliebige Objekten, mit keiner bestimmten Ordnung. Diese Objekte heissen Elemente der Menge\\\\
+
+$\begin{array}{l l}
+\textrm{Beispiele:} & A = \{\textrm{Haus, Gitarre, } 5, 3.14\}\\
+   & A = \{3,3,1,4\} = \{3,1,4\}\\
+& A = \{1,3,5,7,9,...\}\\
+& A = \{(1,1), (1,2), (2,1), (2,2)\}\\
+& A = \{\{1,2,3\},\{2,3,4\},\{3,4,5\}\}\\
+& A = \{1.5 \textrm{ CHF}, 20 \textrm{ CHF}, 3.5 \textrm{ CHF}\}\\
+& A = \{\textrm{x : x = Student in diesem Zimmer der jünger ist als 19 Jahre} \}\\
+& A = \{\} = \emptyset
+\end{array}$
+
+Eine kann wie folgt definiert werden:
+\begin{itemize}
+\item Aufzählung: z.B. $A =\{\textrm{oben, unten, links, rechts}\}$ \\oder $A = \{\textrm{Ein Elefant, zwei Elefanten, drei Elefanten, ...}\}$
+\item Eigenschaft z.B. $A = \{x : x = \textrm{Länder die EUR benutzen}\}$\\ oder  $A = \{x : x = \textrm{Eine Zelle in meinem Körper}\}$ \\ oder $A = \{x : 1\leq x \leq 10, x=\textrm{gerade}\}$ 
+\end{itemize}
+
+Notation:
+\begin{itemize}
+\item $x \in A$: $x$ ist Element von der Menge $A$
+\item $x \notin A$: $x$ ist kein Element von der Menge $A$
+\item $A \subset B$: A ist eine Teilmenge von $B$, d.h., dass alle Elemente von $A$ in $B$ enthalten sind (Muss aber nicht umgekehrt sein)
+\item $A \not \subset B$: $A$ ist keine Teilmenge von $B$, d.h., dass nicht alle Elemente von $A$ in $B$ enthalten sind (Können aber gemeinsame Elemente haben)
+\item $A \cap B:= \{x: x \in A \textrm{ und } x \in B\} = \{x: x \in A  \wedge x \in B\}$ oder die Menge aller Elementen die zu A und (gleichzeitig) zu B gehören.
+\item $A \cup B:= \{x: x \in A \textrm{ oder } x \in B\} = \{x: x \in A  \vee x \in B\}$ oder die Menge aller Elementen die entweder zu A oder zu B gehören.
+\item $A^c := \{x : x \notin A\}$ oder die Menge aller Elementen die nicht zu A gehören
+\item $A \setminus B: = \{x: x \in A \wedge x \notin B\} $ oder die Menge aller Elementen die zu A und (gleichzeitig) nicht zu B gehören
+\item $A \times B:= \{(a,b): a \in A \wedge b \in B\}$ oder die Menge aller geordneten Paare wo der erste Element zu $A$ und der zweite zu $B$ gehört.
+ 
+\end{itemize}
+
+$Bemerkung:$ Ein geordnetes Paar ist nichts anderes als eine Menge die zwei Elemente hat. Was man haben will ist jedoch eine Ordnung, d.h., dass es klar sein muss, welches das erste Element und welches das zweite Element. Wenn wir z.B. einen Paar bilden wollen wo $a$ der erste Element ist und $b$ der zweite Element ist dann genügt die definition einer Menge $P = \{a,b\} = \{b,a\}$ nicht. Man definiert dann $(a,b) = \{\{a\},\{a,b\}\}$, so dass  $(a,b) = \{\{a\},\{a,b\}\} \neq \{\{b\},\{a,b\}\} = (b,a)$. Diese ist nicht die einzige Sinnvolle definition, aber es genügt nur zu wissen, dass $(a,b)$ nichts anderes als eine Art ist, Mengen darzustellen wobei die Elementen eine bestimmte Ordnung haben.\\\\ 
+
+Bekannte Mengen:
+\begin{itemize} 
+\item $\mathbb{N} := \{1,2,3,...\}$ (Natürliche Zahlen)
+\item $\mathbb{N}_0:= \{0,1,2,3,...\}$ 
+\item $\mathbb{Z} := \{...,-2,-1,0,1,2,...\}$ (Ganze Zahlen)
+\item $\mathbb{Q} := \{x: x = \frac{m}{n}, m,n \in \mathbb{Z}, n \neq 0\} $ (Rationale Zahlen) 
+\item $\mathbb{R} := \{...\}$ (Die Reele Zahlen)  
+\item $\mathbb{R}^2 := \mathbb{R} \times \mathbb{R}=\{(x,y) : x,y \in \mathbb(R)\} $ (Der 2-dimensionale Raum, die Ebene)
+\item Irrationale Zahlen $:= \mathbb{R}\setminus \mathbb{Q}$
+\end{itemize}
+
+Intervalle:\\
+Es seien $a,b \in \mathbb{R}$ und $a < b$:
+\begin{itemize}
+\item $(a,b):= \{x \in \mathbb{R}: a<x<b\}$ (Offen)
+\item $[a,b):= \{x \in \mathbb{R}: a\leq x<b\}$
+\item $(a,b]:= \{x \in \mathbb{R}: a<x \leq b\}$
+\item $[a,b]:= \{x \in \mathbb{R}: a\leq x \leq b\}$ (Abgeschlossen)
+\item $[a,\infty):= \{x \in \mathbb{R}: a\leq x\}$
+\item $(a,\infty):= \{x \in \mathbb{R}: a < x\}$
+\item $(-\infty,a]:= \{x \in \mathbb{R}: x \leq a\}$
+\item $(-\infty,a):= \{x \in \mathbb{R}: x < a\}$
+\item
+\end{itemize}
+
+$Bemerkung:$ Intervalle wo $\infty$ vorkommt, sind nur definiert als offen in der entsprechenden Seite, da $\infty$ nie "erreicht wird". 
+
+
+\section{Tipps für Aufgabe 3}
+
+Zurück auf die Definition von Mengen gehen. Wie schreibt man streng Mathematisch jede Menge? Zuerst beweisst man die Ausdrücke für zwei Mengen $A$ und $B$ mit einfachen logischen Überlegungen, danach extrapoliert man die gleichen Gedanken für beliebig viele Mengen. 
+
+\begin{itemize}
+\item $(A \cup B)^c \\= \{x : x \notin A \cup B\} \\= \textrm{Logische Überlegung, z.B. mit Mengendiagramme} \\= \{x : x (\in\setminus\notin ) A (\wedge\backslash\vee ) x (\in\backslash\notin) B\} \\= \{x: x (\in\backslash\notin ) A\} (\cup\backslash\cap ) \{x:x(\in\backslash\notin ) B\} \\= A^c \cap B^c $
+\item $(A \cap B)^c \\= \textrm{Analog} \\= A^c \cup B^c $
+
+\item $(\bigcap_{i=1}^k A_i)^c = (A_1\cap A_2 \cap ... \cap A_k )^c\\ =\{x: x \notin (A_1\cap A_2 \cap ... \cap A_k )\} \\= \{x : x (\in\setminus\notin ) A_1 (\wedge\backslash\vee ) x (\in\backslash\notin) A_2 (\wedge\backslash\vee ) ... (\wedge\backslash\vee ) x  (\in\backslash\notin) A_k\} \\ = \{x: x (\in\backslash\notin ) A_1\} (\cup\backslash\cap ) \{x:x(\in\backslash\notin ) A_2\} ...  (\cup\backslash\cap )\{x:x(\in\backslash\notin ) A_k\} \\= (\bigcup_{i=1}^k\backslash\bigcap_{i=1}^k)\{x:x(\in\backslash\notin ) A_i\} \\= \bigcup_{i=1}^k A_i^c$ 
+
+\item $(\bigcup_{i=1}^k A_i)^c = (A_1\cup A_2 \cup ... \cup A_k )^c\\ =\{x: x \notin (A_1\cup A_2 \cup ... \cup A_k )\} \\= Analog\\= \bigcap_{i=1}^k A_i^c$ 
+
+\end{itemize}
+
+
+
+\end{document}

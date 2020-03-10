@@ -1,0 +1,198 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+\usepackage{amsfonts}
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{parskip}
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Analysis I: Übung 3}
+\author{Michel Heusser}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Theorie}
+\subsection{Grenzwerte}
+
+Eine Funktion (nicht unbedingt eine "schöne" Kurve) $f(x)$ hat einen sog. Grenzwert von links an der stelle $\xi$, falls für jede Folge $\langle x_n \rangle$ die gegen $\xi$ Konvergiert ($x_n<\xi$ und $\lim\limits_{n\rightarrow \infty} x_n = \xi$) die zugehörige (induzierte) Folge $\langle f(x_n) \rangle$ , einen Grenwert $a$ hat (anders gesagt, $\exists a$ s.d. $\lim\limits_{n\rightarrow \infty} f(x_n) = a$). Analog gilt für den Grenzwert von Rechts.
+
+Notation:
+\begin{itemize}
+\item Linke Grenzwert $a_L$ von $f$ gegen $\xi$: $a_L = \lim\limits_{x\rightarrow \xi^-} f(x)$ (Annäherung von links)
+\item Rechte Grenzwert $a_R$ von $f$ gegen $\xi$: $a_R = \lim\limits_{x\rightarrow \xi^+} f(x)$ (Annäherung von rechts)
+\end{itemize}
+
+$Bemerkung$: Die Definition eines Grenzwertes hier ist mächtiger als man denkt und man muss sie entsprechend respektieren. Der linke/rechte Grenzwert einer Funktion gegen eine gewisse Stelle $\xi$ muss nicht unbedingt etwas zu tun haben mit dem Funktionswert $f(\xi)$ an dieser Stelle! \\
+
+
+
+\subsubsection{Beispiel}
+
+$f(x) = \left \{ 
+\begin{array}{l  l}
+	x^2 & x<0\\
+	-x & 0\leq x < 1\\
+	\pi & x=1\\
+	e^x & x>1 \\
+\end{array} \right.$ 
+
+$\lim\limits_{x\rightarrow0^-}f(x) = 0$\\
+$f(x=0)= 0$\\
+$\lim\limits_{x\rightarrow0^+}f(x) = 0$\\
+$\lim\limits_{x\rightarrow1^-}f(x) = -1$\\
+$\lim\limits_{x\rightarrow1^+}f(x) = e$\\
+$f(x=1)= \pi$\\
+
+
+Falls der linke und rechte Grenzwert einer Funktion $f(x)$ an einer gewissen Stelle $\xi$ übereinstimmen, dann redet man vom Grenzwert von $f(x)$ an der Stelle $\xi$ und wird wie folgt definiert:\\
+\begin{center}
+$\lim\limits_{x\rightarrow \xi}f(x) := \lim\limits_{x\rightarrow \xi^-}f(x) = \lim\limits_{x\rightarrow \xi^+}f(x)$
+\end{center}
+
+$Bemerkung$: Man muss Aufpassen mit der folgenden Notation: Der Term $\lim\limits_{x\rightarrow \xi}f(x) = \pm\infty$ will nur besagen, dass der Term gegen  $\pm \infty$ divergiert! Das heisst auf keinen Fall, dass der Grenzwert $\pm \infty$ ist (weil, das keine "fixe" endliche Zahl ist) die Funktion hat deswegen \underline{keinen} Grenzwert, oder anders gesagt, es existiert kein Grenzwert!
+
+\subsubsection{Beispiel}
+$f(x) = \left \{ 
+\begin{array}{l  l}
+	x^2 & x<0\\
+	\sqrt{2} & x=0\\
+	x^3 & x>0\\
+\end{array} \right.$ \\
+
+$\lim\limits_{x\rightarrow0^-}f(x) = \lim\limits_{x\rightarrow0^-}x^2=  0$\\
+$\lim\limits_{x\rightarrow0^+}f(x) = \lim\limits_{x\rightarrow0^+}x^3 = 0$\\
+
+oder einfacher geschrieben: $\lim\limits_{x\rightarrow0}f(x) = 0$\\
+Aber:
+$f(x=0)= \sqrt{2}$\\
+
+\subsection{Stetigkeit}
+Eine Funktion $f(x)$ mit $\xi \in D(f)$ heisst \underline{stetig in $\xi$} falls die folgende Bedingung stimmt:
+
+\begin{center}
+$\lim\limits_{x\rightarrow\xi^-}f(x) =f(\xi)= \lim_{x\rightarrow\xi^+}f(x)$ \\
+\end{center}
+
+Eine Funktion $f(x)$ mit $\xi \in D(f)$ heisst \underline{stetig} falls $f(x)$ in alle $\xi$ von $D(f)$ stetig ist:
+\begin{center}
+$\lim\limits_{x\rightarrow\xi^-}f(x) =f(\xi)= \lim\limits_{x\rightarrow\xi^+}f(x)$,  $\forall \xi \in D(f)$\\
+\end{center}
+
+$Bemerkung$: Die Mathematik hat diese Definition erfunden um solche "spezielle" Funktionen zu beschreiben, deren Graphen gezeichnet werden können "ohne den Bleistift vom Papier wegzuheben". Allerdings gibt es Funktionen, natürlich, die stetige bereiche haben aber selber nicht stetig sind.\\
+
+Zur stetigen Fortsetzung: Wenn der Definitionsbereich $D(f)$ einer Funktion $f(x)$ erweitert wird, so, dass die ursprüngliche Vorschrift (also die Funktion) stetig ist im neuen Bereich, dann hat man $f(x)$ stetig fortgesetzt.
+
+\subsubsection{Beispiel}
+$f: x \in [1,4]\backslash{3} \rightarrow f(x) = x^2 + ln(x)$ kann fortgesetzt auf $f: x \in [1,4] \rightarrow f(x) = x^2 + \ln(x)$ werden, weil $f(x=3) = 3^2 + ln(3)$ kein Problem ("generiert").
+
+\subsubsection{Beispiel}
+$f: x \in [0,2]\backslash{1} \rightarrow f(x) = \frac{1}{x-1}$ kann NICHT fortgesetzt auf $f: x \in [0,2] \rightarrow f(x) = \frac{1}{x-1}$ werden, weil $f(x=1) $nicht definiert ist.
+ 
+\subsection{Zwischenwertsatz}
+
+Der Zwischenwertsatz besagt, dass eine Funktion die in einem stetigen Intervall zwei stellen hat wo eine einen negativen Funktionswert hat und die andere einen positiven hat, dann muss irgenwo die Funktion zwischen diesen Stellen die $x$-Achse geschnitten haben. Oder mehr Mathematisch formuliert: 
+\begin{center}
+Falls $\exists a,b$, so dass $f(x)$ in alle $\xi \in [a,b] \subset D(f)$ stetig ist und $f(a)\cdot f(b) \leq 0$, dann $\exists x_0 \in [a,b]$ mit $f(x_0)=0$
+\end{center}
+
+
+\subsection{Rechenregeln für Grenzwerte}
+
+für $\lim\limits_{x\rightarrow \xi^\pm}f(x) = a$,  $\lim\limits_{x\rightarrow\xi^\pm}g(x)= b$ gilt:
+\begin{itemize}
+\item $\lim\limits_{x\rightarrow \xi^\pm}(f(x)\pm g(x))= a\pm b$
+\item $\lim\limits_{x\rightarrow \xi^\pm}(f(x)\cdot g(x))= a\cdot b$
+\item $\lim\limits_{x\rightarrow \xi^\pm}\frac{f(x)}{g(x)}= \frac{a}{b}$ (Natürlich nur für $g(x)\neq 0$ und $b \neq 0$)
+\item $\lim\limits_{x\rightarrow \xi^\pm} h(f(x)) = h(\lim\limits_{x\rightarrow \xi^\pm} f(x)) = h(a)$ (wenn $\pm$ weggenommen wird, muss $h$ stetig in $a$ sein!)
+\end{itemize}
+$Bemerkung$: Wenn $f(x)$ einen endlichen Grenzwert $a$ hat, aber $\lim\limits_{x\rightarrow\xi^+}g(x)= \infty$, dann ist $\lim\limits_{x\rightarrow \xi^+}\frac{f(x)}{g(x)}=\pm \infty$.
+Wenn $a=0$ und $b=0$ (die Grenzwerte von $f(x)$ und $g(x)$) sind, dann funktioniert die obige Regel nicht. Man muss sehr aufpassen NIE annehmen, dass $\lim\limits_{x\rightarrow \xi^+}\frac{f(x)}{g(x)}= 0$ oder  $\lim\limits_{x\rightarrow \xi^+}\frac{f(x)}{g(x)}=\pm \infty$ ist. Man muss nicht vergessen wie ein Grenzwert definiert ist: Die Tatsache, dass beide Funktionen $f(x)$ und  $g(x)$ gegen null konvergieren, heisst nicht, dass sie nicht auf einer gewissen Art miteinander "interagieren" könnten, so, dass $\frac{f(x)}{g(x)}$ tatsächlich konvergiert. ($Beispiel$:  $\frac{\sin(x)}{x}$).
+
+\subsubsection{Beispiel}
+
+$\lim\limits_{x\rightarrow \infty}(\frac{1}{x}+\arctan(x)) =\lim\limits_{x\rightarrow \infty}\frac{1}{x} + \lim\limits_{x\rightarrow \infty}\arctan(x) = 0 + \frac{\pi}{2} = \frac{\pi}{2}$ 
+
+\subsubsection{Beispiel}
+$\lim\limits_{x\rightarrow \infty}(e^{-x}\cdot\arctan(x)) =\lim\limits_{x\rightarrow \infty}e^{-x} \cdot \lim\limits_{x\rightarrow \infty}\arctan(x) = 0 \cdot \frac{\pi}{2} = 0$ 
+
+\subsubsection{Beispiel}
+$\lim\limits_{x\rightarrow 0} \arccos(\frac{1}{\ln(x)}) = \arccos(\lim\limits_{x\rightarrow 0} \frac{1}{\ln(x)}) = \arccos(0) = \frac{\pi}{2}$
+
+
+\subsection{Tipps zur Übung}
+
+\subsection{Online-Teil}
+\begin{itemize}
+\item Frage 1: Rechenregeln zu Grenzwerte benutzen.
+\item Frage 2: Polynomdivision, dann Rechenregeln zu Grenwerte.
+\item Frage 3: Definition von Stetigkeit benutzen
+\item Frage 4: Definition von Stetigkeit benutzen
+\item Frage 5: Definition von der stetigen Fortsetzung und stetigkeit
+\item Frage 6: Für Vereinigung: Bemerkungen im Theorieteil. Für Schnittmenge: Überlegung $I_1 \cap I_2 $ ist selber eine Teilmenge von $I_1$ und $I_2$
+\item Frage 7: Mit der Definition von Stetigkeit und Grenzwerte arbeiten, kreative Beispiele sich überlegen.
+\item Frage 8: $f(x) = 1/2 \rightarrow g(x):= f(x) - 1/2 = 0$  Mittelwertsatz, sich kreative Beispiele überlegen, $g(x) = f(x) - x$, ...
+\end{itemize}
+
+\subsection{Aufgabe 2}
+Für diesen Teil braucht man nur die Rechenregel von Grenzwerte und kreative Umformungen zu machen
+
+\subsection{Aufgabe 3}
+Definition von stetigkeit
+
+\subsection{Aufgabe 4}
+
+Man will Beweisen, dass es ein $x$ existiert, die die Gleichung $g(x) = f(x) \Leftrightarrow ax + 2 = e^x$ oder $ax+2 -e^x = 0$ löst. Dafür definiert man $h(x) := ax + 2 - e^x$ und man benutzt den Mittelwertsatz (kreativ sein) zu zeigen, dass $h(x)$ mindestens in zwei Punkte die $x$-Achse schneidet. 
+\end{document}
+

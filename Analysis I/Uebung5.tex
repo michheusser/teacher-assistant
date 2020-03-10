@@ -1,0 +1,301 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+\usepackage{amsfonts}
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{parskip}
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Analysis I: Übung 5}
+\author{Michel Heusser}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Theorie}
+
+\subsection{Differenzierbarkeit}
+
+
+\underline{Definition}: Eine Funktion $f: X \rightarrow Y$, $x \rightarrow f(x)$ heisst {\bf differenzierbar in $x_0 \in D(f)$} falls:
+\begin{itemize}  
+\item Formal: $\exists c = \lim_{d \rightarrow 0} \frac{f(x_0+d)-f(x_0)}{d}$ mit $c\in \mathbb{R}$
+\item Formal wörtlich: Der sogenannte \underline{Differentialquotient} $\frac{f(x_0+d)-f(x)}{d}$ zur Funktion $f$ hat den gleichen eindeutigen endlichen (reelen) Grenzwert $c$ wenn man $d$ gegen null von links \underline{und} rechts streben lässt.
+\end{itemize}
+
+
+\emph{Erinnerung:} Wenn man $\lim_{d \rightarrow 0} h(d) $ schreibt, impliziert man dass  $\lim_{d \rightarrow 0} h(d) = \lim_{d \rightarrow 0^+} h(d) = \lim_{d \rightarrow 0^-} h(d)$\\
+
+\subsubsection{Beispiel}
+
+$f: [0,2] \rightarrow \mathbb{R}$, $x \rightarrow f(x) = x^2 + 2x $
+
+Ist $f(x)$ differenzierbar in $x_0 =1$?\\
+
+$ \frac{f(x_0+d)-f(x_0)}{d} = \frac{f(1+d)-f(1)}{d} = \frac{((1+d)^2+2(1+d))-(1^2 + 2\cdot 1)}{d}=\frac{2d+d^2+2d}{d}=  4+d $\\\\
+$ \lim_{d \rightarrow 0^-} \frac{f(x_0+d)-f(x_0)}{d} =  \lim_{d \rightarrow 0^-} 4+d = 4 $\\
+$ \lim_{d \rightarrow 0^+} \frac{f(x_0+d)-f(x_0)}{d} =  \lim_{d \rightarrow 0^+} 4+d = 4 $\\
+$\Rightarrow \lim_{d \rightarrow 0} \frac{f(x_0+d)-f(x_0)}{d} =4 $ (Es konvergiert!)
+
+Die Funktion $f$ ist in $x_0 = 1$ differenzierbar\\\\
+
+\subsubsection{Beispiel}
+
+$f: \mathbb{R} \rightarrow \mathbb{R}$, $x \rightarrow f(x)$
+
+$f(x) = \left \{ 
+\begin{array}{l  l}
+	\sin(x) & x>0\\
+	-x & x\leq 0\\
+\end{array} \right.$ \\
+
+Ist $f$ in $x_0 = 0$ differenzierbar?\\
+
+$ \frac{f(0+d)-f(0)}{d} = \left \{ 
+\begin{array}{l  l}
+	\frac{\sin(0+d)-\sin(0)}{d} = \frac{\sin{d}}{d} & d>0\\
+	\frac{-(0+d)-(-(0))}{d} = -1 & d\leq 0\\
+\end{array} \right.$ \\
+
+$\lim_{d \rightarrow 0^-} \frac{f(0+d)-f(0)}{d} = -1$\\
+$\lim_{d \rightarrow 0^+} \frac{f(0+d)-f(0)}{d} = \lim_{d \rightarrow 0^+} \frac{\sin(d)}{d} =1$\\
+
+Die Funktion $f$ ist nicht in $x_0=0$ differenzierbar
+
+\subsubsection{Beispiel}
+
+$f: \mathbb{R} \rightarrow \mathbb{R}$, $x \rightarrow f(x)$
+
+$f(x) = \left \{ 
+\begin{array}{l  l}
+	\sin(x) & x>0\\
+	x & x\leq 0\\
+\end{array} \right.$ \\
+
+Ist $f$ in $x_0 = 0$ differenzierbar?\\
+
+$ \frac{f(0+d)-f(0)}{d} = \left \{ 
+\begin{array}{l  l}
+	\frac{\sin(0+d)-\sin(0)}{d} = \frac{\sin{d}}{d} & d>0\\
+	\frac{(0+d)-(0)}{d} = 1 & d\leq 0\\
+\end{array} \right.$ \\
+
+$\lim_{d \rightarrow 0^-} \frac{f(0+d)-f(0)}{d} = 1$\\
+$\lim_{d \rightarrow 0^+} \frac{f(0+d)-f(0)}{d} = \lim_{d \rightarrow 0^+} \frac{\sin(d)}{d} =1$\\
+
+Die Funktion $f$ ist in $x_0=0$ differenzierbar\\\\
+
+
+\underline{Definition}: Eine Funktion $f: X \rightarrow Y$, $x \rightarrow f(x)$ heisst {\bf differenzierbar} falls:
+\begin{itemize}  
+\item Formal: $\forall x_0 \in D(f): \exists c = \lim_{d \rightarrow 0} \frac{f(x_0+d)-f(x_0)}{d}$ mit $c\in \mathbb{R}$
+\item Formal wörtlich: Der Term $\frac{f(x_0+d)-f(x_0)}{d}$ hat bei jedem $x$ den gleichen eindeutigen endlichen (reelen) Grenzwert $c$ wenn man $d$ gegen null von links \underline{und} rechts streben lässt.\\\\
+\end{itemize}
+
+\subsubsection{Beispiel}
+
+$f: [0,2] \rightarrow \mathbb{R}$, $x \rightarrow f(x) = x^2 + 2x $
+
+Ist $f$ differenzierbar? (Also ist $f$ differenzierbar in alle $x_0 \in [0,2]?)$\\
+
+$ \frac{f(x_0+d)-f(x_0)}{d} = \frac{((x_0+d)^2+2(x_0+d))-(x_0^2 + 2x_0)}{d}=\frac{2x_0d+d^2+2d}{d}= 2x_0 +d + 2 $\\\\
+$ \lim_{d \rightarrow 0^-} \frac{f(x_0+d)-f(x_0)}{d} =  \lim_{d \rightarrow 0^-} 2x_0 + d + 2 = 2x_0 + 2 $\\
+$ \lim_{d \rightarrow 0^+} \frac{f(x_0+d)-f(x_0)}{d} =  \lim_{d \rightarrow 0^+} 2x_0 + d + 2 = 2x_0 + 2 $\\
+$\Rightarrow \lim_{d \rightarrow 0} \frac{f(x_0+d)-f(x_0)}{d} =2x_0 + 2 $ (Es konvergiert für jeden $x_0$!)
+
+Die Funktion $f$ ist differenzierbar
+
+\subsubsection{Beispiel}
+
+
+$f: \mathbb{R} \rightarrow \mathbb{R}$, $x \rightarrow f(x) = 1 + \sin(x) $
+
+Ist $f$ differenzierbar? \\
+
+$ \frac{f(x_0+d)-f(x_0)}{d} = \frac{(\sin(x_0+d)+1)-(sin(x_0)+1)}{d} = \frac{(\sin(x_0)\cos(d)+\sin(d)\cos(x_0) + 1) - (\sin(x_0)+1)}{d} \\=\frac{(\sin(x_0)\cos(d)+\sin(d)\cos(x_0)) - \sin(x_0)}{d} = \frac{\sin{x_0}(\cos(d)-1)+\sin(d)\cos(x_0)}{d}\\ =\sin(x_0)\cdot\frac{(\cos(d)-1)}{d}+\cos(x_0)\cdot\frac{\sin(d)}{d}$\\\\
+
+$ \lim_{d \rightarrow 0^-} \frac{f(x_0+d)-f(x_0)}{d} =  \lim_{d \rightarrow 0^-} (\sin(x_0)\frac{(\cos(d)-1)}{d}+\cos(x_0)\frac{\sin(d)}{d})\\= \sin(x_0)\cdot\lim_{d \rightarrow 0^-} \frac{(\cos(d)-1)}{d}+\cos(x_0)\cdot\lim_{d \rightarrow 0^-} \frac{\sin(d)}{d} = \sin(x_0) \cdot 0 +\cos(x_0)\cdot1\\ = \cos(x_0) $\\
+
+
+$ \lim_{d \rightarrow 0^+} \frac{f(x_0+d)-f(x_0)}{d} =$ ...Analog...$= \sin(x_0) \cdot 0 +\cos(x_0)\cdot1 \\ =\cos(x_0)$\\
+
+
+$\Rightarrow \lim_{d \rightarrow 0} \frac{f(x_0+d)-f(x_0)}{d} =\cos(x_0) $ (Es konvergiert für jeden $x_0$!)
+
+Die Funktion $f$ ist differenzierbar
+
+\subsection{Ableitung}
+
+\underline{Definition}: Die Funktion $f': X \rightarrow Y$, $x \rightarrow f'(x)$ heisst {\bf Ableitung} der differenzierbaren Funktion $f: X \rightarrow Y$, $x \rightarrow f(x)$ und ist wie folgt definiert:
+\begin{center}
+$f'(x) = \frac{\mathrm{d}f}{\mathrm{d}x} :=  \lim_{d\rightarrow 0} \frac{f(x+d)-f(x)}{d}$\\
+\end{center}
+
+
+\emph{Bemerkung}:  Die Ableitung ist der Grenzwert zu jedem $x$ vom Term $\frac{f(x+d)-f(x)}{d}$ wenn man $d$ gegen $0$ streben lässt ($x$ ist hier dann nicht die "Variable" die sich bewegt!). Damit man eine Funktion von Grenzwerten überhaupt definieren kann, müssen die Grenzwerte existieren (also muss der erwähnte Term bei jedem $x$ immer konvergieren und zwar gegen den gleichen Grenzwert von beiden Seiten!), deswegen definiert man genau den Begriff von Differenzierbarkeit!\\
+
+
+Seien $f: A \rightarrow B$, $x \rightarrow f(x)$ und $g: A \rightarrow C$, $x \rightarrow f(x)$  und in einem bestimmten $x$ differenzierbare Funktionen, dann gilt:
+\begin{itemize}
+\item $(f(x) + g(x))' = f'(x) + g'(x)$
+\item $(C\cdot f(x))' = C\cdot f'(x)$
+\item $(f(x)\cdot g(x))' = f'(x)\cdot g(x) + f(x) \cdot g'(x)$
+\item $(\frac{(f(x)}{g(x)})' = \frac{f'(x)g(x)-f(x)g'(x)}{g(x)^2}$\\
+
+\end{itemize}
+
+Sei $f: A \rightarrow B$, $x \rightarrow f(x)$ eine invertierbare Funktion.
+\begin{itemize}
+\item $(f^{-1}(x))'=\frac{1}{f'(f^{-1}(x))}$\\
+\end{itemize}
+
+Sei $g: A \rightarrow B$, $x \rightarrow g(x)$ eine in einem bestimmten $x$ differenzierbare Funktion und $f: C \rightarrow D$, $x \rightarrow f(x)$ eine in jedem $g(x)$ differenzierbare Funktion dann gilt die {\bf Kettenregel}:
+\begin{itemize}
+\item $(f(g(x))'=f'(g(x))\cdot g'(x)$\\
+\end{itemize}
+
+
+\subsection{Tangente (Linearisierung)}
+
+\underline{Definition}: Die (lineare) Funktion $t_{x_0}(x) = a\cdot x + b$ ist eine Tangente zu einer Funktion $f(x)$ an der stelle  $x_0$ falls gilt:
+
+\begin{itemize}
+\item $t'_{x_0}(x=x_0)=f'(x=x_0)$
+\item $t_{x_0}(x=x_0) = f(x=x_0)$
+\end{itemize}
+$\Rightarrow$ $t_{x_0}(x) = f'(x_0)\cdot (x-x_0) + f(x_0)$\\
+
+\emph{Bemerkung:} $t_{x_0}(x)$ ist die Linearisierung (oder Approximation 1. Ordnung) von $f$ an der Stelle $x_0$, weil es ähnliche werte hat als $f(x)$ in der Umgebung von $x_0$.
+
+
+\subsection{Bekannte Ableitungen}
+
+$f: A \rightarrow B$, $x \rightarrow f(x)$ und $f'$ ist ihre Ableitung:
+
+\begin{table}[h]
+\centering
+    \begin{tabular}{|l|l|}
+        \hline
+        $f(x)$                       & $f'(x)$                   \\ \hline
+        $c$                          & $0$                       \\ 
+        $x^r$ mit $r \in \mathbb{R}$ & $r\cdot x^{r-1}$          \\ 
+        $e^x$                        & $e^x$                     \\ 
+        $\ln(x)$                     & $\frac{1}{x}$             \\ 
+        $\sin(x)$                    & $\cos(x)$                 \\ 
+        $\cos(x)$                    & $-\sin(x)$                \\ 
+        $\tan(x)$                    & $1+\tan^2(x)$             \\ 
+        $\arcsin(x)$                 & $\frac{1}{\sqrt{1-x^2}}$  \\ 
+        $\arccos(x)$                 & $-\frac{1}{\sqrt{1-x^2}}$ \\ 
+        $\arctan(x)$                 & $\frac{1}{1+x^2}$         \\ 
+        $\sinh(x)$                   & $\cosh(x)$                \\ 
+        $\cosh(x)$                   & $\sinh(x)$                \\
+        \hline 
+    \end{tabular}
+\end{table}
+
+
+
+\section{Tipps zur Übung}
+
+\subsection{Online-Teil}
+\begin{itemize}
+\item Frage 1: Definition von Asymptote benutzen, falls erfüllt $\rightarrow$ Asymptote
+\item Frage 2: Wie Frage 1
+\item Frage 3: Definition: von Tangente benutzen
+\item Frage 4: Nullstellen der Ableitung von $f$ sind stellen wo $f$ die Steigung gleich Null ist. Lokale Minimale- und Maximalstellen haben keine Steigung gleich Null. 
+\item Frage 5: Definition einer Tangente: Parameter $a$ und $b$ mit der Bedingung einer Tangente ermitteln
+\item Frage 6: Definition von $a^x$? Wie kann man $x^x$ dann anders Schreiben (eigentlich seine Definition)? Kettenregel benutzen!
+\item Frage 7: Rechenregeln von Ableitungen benutzen!
+\item Frage 8: Kettenregel und Ableitung von $e^x$.
+\end{itemize}
+
+\subsection{Aufgabe 2}
+Rechenregeln und bekannte Ableitungen benutzen.
+
+\subsection{Aufgabe 3}
+$f(x) = \ln(x)$
+Tangente $t_{x_0}(x)$ zu einem beliebigen festen $x_0$ berechnen ($x_0$ als Variable lassen). Danach berechnet man die Seiten des Dreieckes:
+\begin{itemize}
+\item Seite 1: Von der Höhe von Schnitt von $t_{x_0}{x}$ mit der $y$-Achse bis $f(x=x_0)$
+\item Seite 2: Von $0$ bis $x_0$
+\end{itemize}
+
+\subsection{Aufgabe 4}
+Sich fragen: Was will man Beweisen? Was ist die Definition von "ungerade"? Irgendmal $x$ durch $f(f^{-1}(x))$ ersetzen...
+
+\end{document}
+
+%$f: \mathbb{R} \rightarrow \mathbb{R}$, $x \rightarrow f(x)$
+%
+%$f(x) = \left \{ 
+%\begin{array}{l  l}
+%	\sin(x) & x>0\\
+%	-x & x\leq 0\\
+%\end{array} \right.$ \\
+%
+%Ist $f$ in $x_0 = 0$ differenzierbar?\\
+%
+%$ \frac{f(x_0+d)-f(x_0)}{d} = \left \{ 
+%\begin{array}{l  l}
+%	\frac{\sin(x_0+d)-\sin(x_0)}{d} = (*) = \frac{\sin{x_0}(\cos(d)-1)}{d}+\frac{\sin(d)\cos(x_0)}{d}& x>0\\
+%	\frac{-(x_0+d)-(-(x_0))}{d} & x\leq 0\\
+%\end{array} \right.$ \\
+%
+%$\lim_{d \rightarrow 0^-} \frac{f(x_0+d)-f(x_0)}{d} = \left \{ 
+%\begin{array}{l  l}
+%	\frac{\sin(x_0+d)-\sin(x_0)}{d} = (*) = \frac{\sin{x_0}(\cos(d)-1)}{d}+\frac{\sin(d)\cos(x_0)}{d}& x>0\\
+%	\frac{-(x_0+d)-(-(x_0))}{d} & x\leq 0\\
+%\end{array} \right.$ \\
+%
+%$(*) = \frac{\sin(x_0+d)-\sin(x_0)}{d} = \frac{\sin(x_0)\cos(d)+\sin(d)\cos(x_0) - \sin(x_0)}{d} = \frac{\sin{x_0}(\cos(d)-1)+\sin(d)\cos(x_0)}{d}= \frac{\sin{x_0}(\cos(d)-1)}{d}+\frac{\sin(d)\cos(x_0)}{d}$\\\\

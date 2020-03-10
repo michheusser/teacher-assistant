@@ -1,0 +1,340 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+\usepackage{amsfonts}
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{parskip}
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{Analysis: Uebung 2}
+\author{Michel Heusser}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Theorie}
+
+\subsection{Mengenlehre}
+Menge: Zusammenfassung von beliebig viele (endlich oder unendlich viele) beliebige Objekten, mit keiner bestimmten Ordnung. Diese Objekte heissen Elemente der Menge\\\\
+
+$\begin{array}{l l}
+\textrm{Beispiele:} & A = \{\textrm{Haus, Gitarre, } 5, 3.14\}\\
+   & A = \{3,3,1,4\} = \{3,1,4\}\\
+& A = \{1,3,5,7,9,...\}\\
+& A = \{(1,1), (1,2), (2,1), (2,2)\}\\
+& A = \{\{1,2,3\},\{2,3,4\},\{3,4,5\}\}\\
+& A = \{1.5 \textrm{ CHF}, 20 \textrm{ CHF}, 3.5 \textrm{ CHF}\}\\
+& A = \{\textrm{x : x = Student in diesem Zimmer der jünger ist als 19 Jahre} \}\\
+& A = \{\} = \emptyset
+\end{array}$
+
+Eine kann wie folgt definiert werden:
+\begin{itemize}
+\item Aufzählung: z.B. $A =\{\textrm{oben, unten, links, rechts}\}$ \\oder $A = \{\textrm{Ein Elefant, zwei Elefanten, drei Elefanten, ...}\}$
+\item Eigenschaft z.B. $A = \{x : x = \textrm{Länder die EUR benutzen}\}$\\ oder  $A = \{x : x = \textrm{Eine Zelle in meinem Körper}\}$ \\ oder $A = \{x : 1\leq x \leq 10, x=\textrm{gerade}\}$ 
+\end{itemize}
+
+Notation:
+\begin{itemize}
+\item $x \in A$: $x$ ist Element von der Menge $A$
+\item $x \notin A$: $x$ ist kein Element von der Menge $A$
+\item $A \subset B$: A ist eine Teilmenge von $B$, d.h., dass alle Elemente von $A$ in $B$ enthalten sind (Muss aber nicht umgekehrt sein)
+\item $A \not \subset B$: $A$ ist keine Teilmenge von $B$, d.h., dass nicht alle Elemente von $A$ in $B$ enthalten sind (Können aber gemeinsame Elemente haben)
+\item $A \cap B:= \{x: x \in A \textrm{ und } x \in B\} = \{x: x \in A  \wedge x \in B\}$ oder die Menge aller Elementen die zu A und (gleichzeitig) zu B gehören.
+\item $A \cup B:= \{x: x \in A \textrm{ oder } x \in B\} = \{x: x \in A  \vee x \in B\}$ oder die Menge aller Elementen die entweder zu A oder zu B gehören.
+\item $A^c := \{x : x \notin A\}$ oder die Menge aller Elementen die nicht zu A gehören
+\item $A \setminus B: = \{x: x \in A \wedge x \notin B\} $ oder die Menge aller Elementen die zu A und (gleichzeitig) nicht zu B gehören
+\item $A \times B:= \{(a,b): a \in A \wedge b \in B\}$ oder die Menge aller geordneten Paare wo der erste Element zu $A$ und der zweite zu $B$ gehört.
+ 
+\end{itemize}
+
+$Bemerkung:$ Ein geordnetes Paar ist nichts anderes als eine Menge die zwei Elemente hat. Was man haben will ist jedoch eine Ordnung, d.h., dass es klar sein muss, welches das erste Element und welches das zweite Element. Wenn wir z.B. einen Paar bilden wollen wo $a$ der erste Element ist und $b$ der zweite Element ist dann genügt die definition einer Menge $P = \{a,b\} = \{b,a\}$ nicht. Man definiert dann $(a,b) = \{\{a\},\{a,b\}\}$, so dass  $(a,b) = \{\{a\},\{a,b\}\} \neq \{\{b\},\{a,b\}\} = (b,a)$. Diese ist nicht die einzige Sinnvolle definition, aber es genügt nur zu wissen, dass $(a,b)$ nichts anderes als eine Art ist, Mengen darzustellen wobei die Elementen eine bestimmte Ordnung haben.\\\\ 
+
+Bekannte Mengen:
+\begin{itemize} 
+\item $\mathbb{N} := \{1,2,3,...\}$ (Natürliche Zahlen)
+\item $\mathbb{N}_0:= \{0,1,2,3,...\}$ 
+\item $\mathbb{Z} := \{...,-2,-1,0,1,2,...\}$ (Ganze Zahlen)
+\item $\mathbb{Q} := \{x: x = \frac{m}{n}, m,n \in \mathbb{Z}, n \neq 0\} $ (Rationale Zahlen) 
+\item $\mathbb{R} := \{...\}$ (Die Reele Zahlen)  
+\item $\mathbb{R}^2 := \mathbb{R} \times \mathbb{R}=\{(x,y) : x,y \in \mathbb(R)\} $ (Der 2-dimensionale Raum, die Ebene)
+\item Irrationale Zahlen $:= \mathbb{R}\setminus \mathbb{Q}$
+\end{itemize}
+
+Intervalle:\\
+Es seien $a,b \in \mathbb{R}$ und $a < b$:
+\begin{itemize}
+\item $(a,b):= \{x \in \mathbb{R}: a<x<b\}$ (Offen)
+\item $[a,b):= \{x \in \mathbb{R}: a\leq x<b\}$
+\item $(a,b]:= \{x \in \mathbb{R}: a<x \leq b\}$
+\item $[a,b]:= \{x \in \mathbb{R}: a\leq x \leq b\}$ (Abgeschlossen)
+\item $[a,\infty):= \{x \in \mathbb{R}: a\leq x\}$
+\item $(a,\infty):= \{x \in \mathbb{R}: a < x\}$
+\item $(-\infty,a]:= \{x \in \mathbb{R}: x \leq a\}$
+\item $(-\infty,a):= \{x \in \mathbb{R}: x < a\}$
+\item
+\end{itemize}
+
+$Bemerkung:$ Intervalle wo $\infty$ vorkommt, sind nur definiert als offen in der entsprechenden Seite, da $\infty$ nie "erreicht wird". 
+
+\subsection{Definition einer Funktion}
+
+Eine Funktion (oder Abbildung) ist eine Vorschrift die jedes Element $x \in A$ einen eindeutigen Element $f(x) \in B$ zuordnet.\\
+Schreibweise: $f: x \in A \rightarrow f(x) \in B$\\\\
+Nomenklatur (bezüglich $f$):
+\begin{itemize}
+\item$f(x)$: Funktionswert an der Stelle $x$ (auch Bild von $x$)
+\item $D(f) = A$: Definitionsbereich
+\item $B$: Zielbereich
+\item $W(f) = \{ f(x) : x \in A\}$: Wertebereich (i.A $W(f) \subset B$)
+\end{itemize}
+
+$Bemerkung$: da A und B allgemeine Mengen sind, sind Funktionen nicht nur für "Zahlen" definiert, sondern für jede beliebige Menge/Elemente.Die Vorschrift (also die Funktion) muss nicht unbedingt durch eine mathematische "Formel" gegeben werden, jede beliebige Art die eine eindeutige Vorschrift definiert (z.B. eine Tabelle, ein rekursiver Ausdruck) ist erlaubt! 
+
+\subsubsection{Beispiel}
+$T := \{\textrm{Personenwagen, LKW, Segelschiff, Kampfjet, Paraglider}\}$\\
+$A := \{\textrm{Erde, Luft, Wasser, Weltall}\}$
+\begin{table}[h!]
+    \begin{tabular}{|c|c|}
+        \hline
+        $x \in D(f)$          & $f(x) \in W(f)$ \\ \hline
+        Peronenwagen & Erde   \\ 
+        LKW          & Erde   \\ 
+        Segelschiff  & Wasser \\ 
+        Kampfjet     & Luft   \\ 
+        Paraglider   & Luft   \\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\begin{itemize}
+\item $D(f) = T$ 
+\item $W(f) = \{\textrm{Erde,Wasser, Luft}\} = A \setminus \{\textrm{Weltall}\}$\\
+\end{itemize}
+
+\subsubsection{Beispiel}
+
+$T: [0,24] \rightarrow \mathbb{R}, t \rightarrow T(t)$
+T(t) = Die mittlere Temperatur des Wassers im Zürichsee um t Uhr \\
+
+Angenommen wir hätten ein Gerät, das den reelen Wert $T(t)$ messen könnte, ist dann $T(t)$ bei jedem $t$ eindeutig. D(f) und W(f) sind dann eindeutig, die Vorschrift $T$ ist streng genommen auch eine Funktion. Ob man, eine Formel oder Ausdruck für $T(t)$ finden könnte ist eine andere Frage, aber es ist immernoch eine Funktion.\\
+
+\subsection{Reelwertige Funktionen}
+Eine Funktion der Art: $f: A \rightarrow B$ mit $A \subset \mathbb{R}$ und $B \subset \mathbb{R}$ heisst reelwertige Funktion einer reelen Variablen. Jeder solchen Funktionen gehört ihr Graph $\Gamma (f)$:
+
+\begin{center}
+$\Gamma(f) = \{ (x,y) \in \mathbb{R} \times  \mathbb{R}\ : x\in A, y = f(x)\}$
+\end{center}
+
+Oft (aber nicht immer!) ist der Graph eine Kurve. Hier Kurve heisst nur "etwas, dass man Zeichnen kann".
+
+\subsubsection{Beispiel}
+$f: A = \mathbb{N} \rightarrow B = \mathbb{N}, f(x) := x^2$ (f ist reelwertig einer reelen Variable weil $\mathbb{N} \subset \mathbb{R}$)
+
+\begin{itemize}
+\item $D(f) = \mathbb{N}$
+\item $W(f) = {0,1,4,9,...}$ ($\neq \mathbb{N}$)
+\item $\Gamma= \{(0,0),(1,1),(2,4),(3,9),...\}$ \\
+(Kann auch mit Punkten auf der $\mathbb{R} \times \mathbb{R}$ - Ebene dargestellt werden).
+\end{itemize}
+
+\subsubsection{Beispiel}
+$f: A=\mathbb{R} \rightarrow B=\mathbb{R}, f(x) := \mathrm{sin}(x)$\\\\
+\begin{itemize}
+\item $D(f) = \mathbb{R}$
+\item $W(f) = [-1,1]$
+\item $\Gamma = \{(x,y) \in \mathbb{R} \times  \mathbb{R}\ : x\in A, y = \mathrm{sin}(x)\}$
+\end{itemize}
+
+\subsubsection{Beispiel}
+$f: A=\mathbb{R} \rightarrow \mathbb{R}$\\
+
+$f(x) = \left\{
+\begin{array}{l l}
+1 & x \in \mathbb{Q}\\
+0 & x \notin \mathbb{Q}\\
+\end{array}\right.$\\
+
+\begin{itemize}
+\item $D(f) = \mathbb{R}$
+\item $W(f) = {0,1}$
+\item $\Gamma(f) =...$
+\end{itemize}
+
+$Bemerkung$: Obwohl es ein Graph $\Gamma(f)$ existiert, kann man die Funktion nicht in einer Kurve darstellen (Wie würde man so eine Funktion denn anschaulich Zeichnen?)
+
+
+\subsubsection{Beispiel}
+$f: [0,2\pi) \rightarrow \mathbb{R} \times \mathbb{R}, t \rightarrow (r \cos(t) + m_x, r \sin(t) + m_y)$
+\begin{itemize}
+\item $D(f) = [0,2\pi)$
+\item $W(f) = \{(x,y): x = r\cos(t) + m_x, y = r\sin(t) + m_y \textrm{ und } t \in [0,2\pi)\}$ 
+\\(Kreis in der $\mathbb{R} \times \mathbb{R}$-Ebene mit Mittelpunkt $M = (m_x, m_y)$
+\end{itemize}
+
+\subsubsection{Beispiel}
+$f: \mathbb{R}^2 \rightarrow \mathbb{R}^2, (x,y) \rightarrow (3x + 1 y, 2y) $
+\begin{itemize}
+\item $D(f) = \mathbb{R}$
+\item $W(f) = \mathbb{R}$
+\end{itemize}
+
+$Bemerkung: $Hier um $W(f)$ herauszufinden braucht man Grundlagen in Lineare Algebra weil es hier eben um eine lineare Abbildung (lineare Funktion) geht.
+
+\subsubsection{Beispiel}
+$a: \mathbb{N} \rightarrow \mathbb{R}, n \rightarrow a(n) := \frac{1-q^n}{1-q}$
+
+\begin{itemize}
+\item $D(f) = \mathbb{N}$
+\item $W(f) = ...$
+\item $\Gamma(f) = ...$
+\end{itemize}
+
+$Bemerkung:$ Eine reele Zahlenfolge $\langle a_n\rangle$ kann als Function beschrieben werden: $\mathbb{N} \rightarrow \mathbb{R}, n \rightarrow f(n) := a_n$ 
+
+\subsection{Eigenschaften von Funktionen}
+
+Eine Funktion $f: A \rightarrow \mathbb{R} ist$:
+\begin{itemize}
+\item Gerade: Falls $f(-x) = f(x)$ gilt (Spiegelung an der y-Achse)
+\item Ungerade: Falls $f(-x) = -f(x)$ gilt (Punktspiegelung im Ursprung)
+\item Monoton wachsend: Falls $x_1 < x_2$ und $f(x_1) < f(x_2)$, $\forall x_1, x_2 \in A$
+\item Strikt monoton wachsend: Falls $x_1 < x_2$ und $f(x_1) \leq f(x_2)$, $\forall x_1, x_2 \in A$  
+\item Monoton wachsend: Falls $x_1 < x_2$ und $f(x_1) > f(x_2)$, $\forall x_1, x_2 \in A$
+\item Strikt monoton wachsend: Falls $x_1 < x_2$ und $f(x_1) \geq f(x_2)$, $\forall x_1, x_2 \in A$\\
+\end{itemize}
+
+Rechenregeln:
+\begin{itemize}
+\item $f(x)$ gerade, $g(x)$ gerade $\Rightarrow$ $f(x)g(x)$ gerade
+\item $f(x)$ gerade, $g(x)$ ungerade $\Rightarrow$ $f(x)g(x)$ ungerade 
+\item $f(x)$ ungerade, $g(x)$ ungerade $\Rightarrow$ $f(x)g(x)$ gerade
+\item $f(x)$ gerade, $g(x)$ gerade $\Rightarrow$ $f(x)+g(x)$ gerade
+\item $f(x)$ ungerade, $g(x)$ ungerade $\Rightarrow$ $f(x)+g(x)$ ungerade
+\end{itemize}
+
+$Bemerkung$: Eine Funktion kann gerade oder ungerade sein, muss aber nicht!\\
+
+\subsection{Elementare Funktionen}
+
+\begin{itemize}
+\item Potenzfunktion: $\mathbb{R} \rightarrow \mathbb{R}, x \rightarrow x^n$ mit ($n \in \mathbb{R}$)
+\item Polynome n-ten Grades: $\mathbb{R} \rightarrow \mathbb{R}, x \rightarrow p(x):= a_0 + a_1x+a_2x^2 + ... + a_nx^n$
+\item Rationale Funktionen: $\mathbb{R}\setminus{0} \rightarrow \mathbb{R}, x \rightarrow R(x) := \frac{a_0 + a_1x + ... +a_nx^n}{b_0 + b_1x + ... +b_nx^n} = \frac{p(x)}{q(x)}$
+\item Exponentialfunktion: $e^x := \exp(x) := 1 + x +\frac{1}{2}x^2 + \frac{1}{6}x^3 +... = \sum_{i=0}^\infty \frac{x^n}{n!}$\\\\
+$Bemerkung$: In der regel benutzt man $e^x$ als Notation für die Exponentialfunktion $\exp(x)$. Man muss aber klar haben, dass die eulerische Zahl $e$ selber durch die Exponentialfunktion definiert ist!: $e := exp(1) = 1+1+\frac{1}{2} + \frac{1}{6} + ...$. Deswegen benutzt man die anschaulichere Form $e^x$ für $\exp(x)$\\
+
+\item Natürlicher Logaritmus: $\ln(x):= \textrm{ Umkehrfunktion von } e^x$
+\item Exponentialfunktion $a^x := e^{\ln(a)x}$
+\item Logaritmus: $\log_a(x) := \textrm{ Umkehrfunktion von } a^x$
+\item Trigonometrische Funktionen:\\
+ $\sin(x) := \frac{1}{2i}(e^{ix}-e^{-ix})$\\
+ $\cos(x) := \frac{1}{2}(e^{ix}+e^{-ix})$\\
+$\tan(x) :=\frac{\sin(x)}{\cos{x}}$\\\\
+$Bemerkung$: Man muss hier nur wissen, dass $i$ (die sog. imaginäre Einheit) das mathematische Objekt ist, dass die Gleichung $x^2 = -1$ erfüllt (d.h. $i^2 = -1$)
+\end{itemize}
+
+\subsection{Koordinatentransformation}
+Für die Funktion $f: \mathbb{R} \rightarrow \mathbb{R}, x \rightarrow f(x)$ gilt:
+\begin{itemize}
+\item $f(x)+b$ mit $b > 0$ verschiebt $f(x)$ um $b$ in positiver $y$-Richtung
+\item $b f(x)$ mit $b>1$ streckt $f(x)$ um $b$ in positiver $x$-Richtung
+\item $-f(x)$ spiegelt $f(x)$ in der $x$-Achse
+\item $f(x+a)$ mit $a > 0$ verschiebt $f(x)$ um $a$ in negativer $x$-Richtung
+\item $f(ax)$ mit $a > 1 $ staucht $f(x)$ um $a$ in negativer $x$-Richtung
+\item $f(-x)$ spiegelt $f(x)$ in der $y$-Achse
+\end{itemize}
+
+$Bemerkung:$ Durch kombination von den obigen eigenschaften kann man jede Koordinatentransformation konstruieren auch wenn $a$ und $b$ nicht die Eigenschaften von oben erfüllen.
+
+\section{Tipps}
+\subsection{Online Teil}
+
+\begin{itemize}
+\item Frage 1: 
+\item Frage 2: Zurück auf die definition von Graph und Funktion. Zu jedem $x$-Element gehört einen eindeutigen $y$-Element um den entsprechenden Paar $(x,y)$ zu bilden
+\item Frage 3: die Funktion $f(x) = x^r$  analysieren. Wie ändert sich die Kurve mit verschiedenen $r$, was für eine eigenschaft muss $r$ haben um so eine Form zu haben?
+\item Frage 4: Additionstheoreme der Trigonometrie benutzen: \\
+$\sin{a + b} = \sin(a)\cos(b) + \sin(b)\cos(a)$\\
+$\cos(a + b) = \cos(a)\cos(b) - \sin(a)\sin(b)$\\
+$\sin^2(x) + \cos^2(x) = 1, \forall x$\\\\
+$\sin(x)$ und $\cos(x)$ sind Funktionen die entweder gerade oder ungerade sind. Diese Eigenschaften helfen die Terme zu vereinfachen indem man negative Vorzeichen im Argument wegnehmen kann: $f(-x) = -f(x)$ falls ungerade und $f(-x) = f(x)$ falls gerade.
+
+\item Frage 5: Faktorisieren und Rechenregel für gerade/ungerade Funktionen benutzen
+\item Frage 6: Rechenregel für gerade/ungerade Funktionen benutzen
+\item Frage 7: Durch Umformungen die Definition von gerade oder ungerade zu erfüllen. Sich durch graphische Hilfsmitteln unterstützen lassen
+\item Frage 8: Definition der Exponentialfunktion $a^x$ benutzen und Koordinatentransformationen anschauen. Versuchen $e_b$ durch $e_a$ zu beschreiben.
+\item Frage 9: $]0,\infty[ \Leftrightarrow (0,\infty)$. Rechenregel der Logaritmus benutzen: $\log_ax = \frac{\ln x}{\ln a}$ und versuchen $\log_bx $ durch $\log_ax$ zu beschreiben
+\item Frage 10: Koordinatentransformation, Gerade/Ungerade Eigenschaft von $\sin(x)$ und Periodizität beachten!
+\item Mit der Funktion spielen und experimentieren! Was passiert wenn $x$ oder $y$ vertauscht/negativ gesetzt werden?
+\item Koordinatentransformation in $x$ und $y$ anschauen!
+\end{itemize}
+
+
+\subsection{Aufgabe 2}
+\begin{itemize}
+\item a) Zeichnen
+\item b) Da sgn$(x)$ und $|x|$ das Verhalten ändern, je nach Region von $x$ muss man zeigen, dass jede Gleichung für jede Bereiche von $x$ gilt (d.h. bei $x<0$, $x> 0$ und $x=0$). Bei jedem Bereich von $x$ lassen sich die Terme vereinfachen, so dass man die Gleichungen auf beiden Seiten das Gleiche aufweisen.) Wenn $y$ auch vorkommt muss man alle mögliche kombinationen Probieren (insgesammt 9 Kombinationen!).
+\end{itemize}
+
+\subsection{Aufgabe 3}
+In dieser Aufgabe muss man auch eine Fallunterscheidung benutzen um zu Zeigen, dass $f(x)$ die gezeichnete Form hat. Man muss Anfangen mit der Definition vom Betrag: $|x+1| = x + 1$ wenn $x+1 >0$ ist (also für $x>-1$). Wenn $x+1 <0$ ist (also $x<-1$ dann ist $|x+1| = -(x+1)$. Was passiert mit dem Term $|x-1|$? Wie viele Bereiche muss man Betrachten um die Funktion ohne Betragstriche schreiben zu können?
+
+\subsection{Aufgabe 4}
+In dieser Aufgabe kann jede funktion $f_i(x)$ (i = 1,2,3,4,5) als eine transformierte Version von $f_0(x)$ umgeformt werden (Koordinatentransformation). Man kann, deshalb zuerst $f_0$ zeichnen und dann die entsprechende Transformierte version benutzen um die anderen Kurven zu zeichnen.
+
+
+
+\end{document}
